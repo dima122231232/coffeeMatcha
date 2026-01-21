@@ -8,7 +8,7 @@ import Header from "@/app/components/Header/Header";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-        <title>Coffee Match</title>
+        <title>Coffee Matcha</title>
       <body>
         <Header/>
         <SmoothScrolling>

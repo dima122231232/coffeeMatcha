@@ -1,0 +1,204 @@
+:root{
+    --font-paragraph-size: clamp(12px, .82vw, 16px);
+    --font-button-size: clamp(12px, .82vw, 14px);
+    --font-large_text-size:clamp(22px, 2.2vw, 42px);
+
+    --cup-size:100;
+    --cup-size-block: calc((var(--cup-size) * 1vw) * .2);
+
+    --main-color:#F3F4F2;
+    --green-color:#345D31;
+    --lite-green-color:#E6E9DF;
+    --black-main-color:#191919;
+
+    --indents:clamp(16px, 2.08vw, 40px);
+
+    --Inter:"Inter", sans-serif;
+    --NB-International-Pro:"NB-International-Pro", sans-serif;
+}
+
+body {
+  font-family: var(--NB-International-Pro);
+  font-weight: 500;
+  background-color: var(--main-color);
+  height: 200vh;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+/*ADD--------------------------------------*/
+.StartAnimation .word{
+  --p: 0%;
+  background: linear-gradient(to bottom, transparent var(--p), currentColor var(--p));
+  display: inline;
+  will-change: --p;
+}
+.vlock{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: var(--main-color);
+    will-change: transform;
+    z-index:50;
+}
+
+
+/*HEADER--------------------------------------*/
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.header--desktop{
+    height:100px;
+}
+.header--desktop .header__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - var(--indents) * 2);
+}
+.header--desktop .header__logo{
+    width: clamp(65px, 5.2vw, 100px);
+}
+.header--desktop .header__actions{
+    display: flex;
+    align-items: center;
+    gap:.5vw;
+    position: relative;
+}
+.header--desktop .header__button{
+    width: 110px;
+    height: 40px;
+    background-color: var(--black-main-color);
+    font-size: var(--font-button-size);
+    color: var(--main-color);
+    border: none;
+    font-family: var(--Inter);
+    font-weight: 500;
+}
+.header__burger--desktop{
+    width: 40px;
+    height: 40px;
+    background-color: var(--black-main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex-direction: column;
+    z-index: 3;
+    border: none;
+    will-change:transform;
+}
+.header__burger--desktop .header__burger__polosa{
+    width: 20px;
+    height: 2px;
+    background-color: var(--main-color);
+    will-change:transform;
+}
+.header__burger--desktop-helper{
+    width: 40px;
+    height: 40px;
+    background-color: var(--black-main-color);
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*HERO--------------------------------------*/
+.cup-canvas{
+    width: calc(var(--cup-size) * 1%);
+    height: calc(var(--cup-size) * 1%);
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%) scale(0);
+}
+.hero__content{
+   transform: translateY(-2%);
+   height: 100vh;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+.hero__info{
+    display: flex;
+    align-items: end;
+    justify-content:space-around;
+}
+.hero-indent{
+    width:calc(((100vw - var(--cup-size-block)) / 2) - var(--indents));
+}
+.hero__divider{
+    width: var(--cup-size-block);
+    height: var(--cup-size-block);
+}
+.hero__title {
+    text-align: right;
+    font-size: clamp(32px , 3.4vw ,66px);
+    line-height:90%;
+    letter-spacing:-.03rem;
+    font-weight: 500;
+    color: var(--black-main-color);
+}
+.hero__description{
+    font-size: var(--font-paragraph-size);
+    width: clamp(280px, 22.2vw, 430px);
+    margin-bottom:2vw;
+    color: var(--black-main-color);
+}
+.hero__tagline{
+    margin-top: 2vw;
+    font-size: var(--font-large_text-size);
+    line-height:90%;
+    font-weight: 500;
+    color: var(--green-color);
+}
+.hero__button{
+    width: clamp(158px, 10vw, 190px);
+    height: clamp(38px, 3.125vw, 60px);
+    background-color: var(--lite-green-color);
+    font-size: var(--font-button-size);
+    color: var(--black-main-color);
+    border-radius: 8px;
+    border: none;
+    font-family: var(--Inter);
+    font-weight: 600;
+}
+
+
+canvas {
+  z-index: -2;
+}

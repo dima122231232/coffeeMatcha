@@ -17,7 +17,14 @@ export default function Header() {
 
         gsap.to([lineA.current, lineB.current], {duration: 0.25,rotate: (i) => (o ? 0 : (i ? 45 : -45)),transform: (i) => (o ? "translateY(0%)" : i ? "translateY(-50%)" : "translateY(50%)"),});
         gsap.to(burger.current, { duration: 0.25, gap: o ? 5 : 0, ease });
-        helper.current.classList.toggle("open");
+        gsap.to(helper.current, {
+  duration: 0.35,
+  height: o ? 40 : 420,
+  width: o ? 40 : 720,
+  borderRadius: o ? 0 : 12,
+  ease,
+  autoRound: false 
+});
         open.current = !o;
     };
 

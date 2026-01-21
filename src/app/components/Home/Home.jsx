@@ -20,7 +20,7 @@ export default function Home() {
     const spans = gsap.utils.toArray(".StartAnimation .word");
     gsap.set(spans, { "--p": "0%" });
 
-    gsap.to(spans, { "--p": "100%", duration: .4, delay: .3, ease, stagger: 0.015, overwrite: true });
+    gsap.to(spans, { "--p": "110%", duration: .4, delay: .3, ease, stagger: 0.015, overwrite: true });
     gsap.to(".cup-canvas", { duration: .5, delay: .2, transform: "translate(-50%, -50%) scale(1)", ease });
     gsap.to(".vlock", { duration: .3, scale: 0 });
   }, []);

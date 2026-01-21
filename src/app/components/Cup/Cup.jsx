@@ -1,137 +1,136 @@
 "use client";
-
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-// ===== НАСТРОЙКИ =====
-const CAM = { x: 0, y: 0, z: 4, fov: 45 };
-const ROT = { x: 0, y: -90, z: -0.25 };
+// вращение модели
+const ROT = { x: 0, y: -Math.PI / 2, z: -0.25 };
+const BREAKPOINT = 768;
 
-export default function Cup({ modelUrl = "/images/cup.glb", onLoaded }) {
-  const ref = useRef(null);
+export default function Cup({
+  modelUrl = "/images/cup.glb",
+  onLoaded,
+  camLarge = { x: 0, y: 0, z: 8, fov: 45 },
+  camSmall = { x: 0, y: 0, z: 1.6, fov: 45 },
+}) {
+  const canvasRef = useRef(null);
 
   useEffect(() => {
-    const canvas = ref.current;
+    const canvas = canvasRef.current;
     if (!canvas) return;
 
+    // сцена
     const scene = new THREE.Scene();
-    const cam = new THREE.PerspectiveCamera(CAM.fov, 1, 0.1, 1000);
 
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    // камера
+    const camera = new THREE.PerspectiveCamera(camLarge.fov, 1, 0.1, 100);
+    camera.position.set(camLarge.x, camLarge.y, camLarge.z);
+
+    // рендерер
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: "high-performance",
+      depth: true,
+      stencil: false,
+    });
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.setSize(canvas.clientWidth || innerWidth, canvas.clientHeight || innerHeight, false);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
 
-    scene.add(new THREE.AmbientLight(0xffffff, 2.5));
-    const light = new THREE.DirectionalLight(0xffffff, 2);
-    light.position.set(5, 5, 5);
-    scene.add(light);
+    // освещение
+    scene.add(new THREE.AmbientLight(0xffffff, 2.2));
+    const dir = new THREE.DirectionalLight(0xffffff, 1.6);
+    dir.position.set(4, 6, 5);
+    scene.add(dir);
 
-    const modelGroup = new THREE.Group();
-    scene.add(modelGroup);
-
-    let model = null;
-    let rafId = null;
-
-    const lookTarget = new THREE.Vector3(0, -0.05, 1.75);
-
-    const initialAspect = (canvas.clientWidth || innerWidth) / (canvas.clientHeight || innerHeight);
-    cam.aspect = initialAspect;
-    cam.updateProjectionMatrix();
-
-    const hFovConst = 2 * Math.atan(Math.tan((cam.fov * Math.PI) / 180 / 2) * initialAspect);
-
-    const fitCameraToObject = (object, camera, offset = 1.25) => {
-      const box = new THREE.Box3().setFromObject(object);
-      const sphere = box.getBoundingSphere(new THREE.Sphere());
-      const radius = sphere.radius;
-
-      const distance = Math.abs(radius / Math.sin(hFovConst / 2)) * offset;
-
-      const dir = new THREE.Vector3(CAM.x, CAM.y, CAM.z).sub(new THREE.Vector3(0, 0, 0));
-      if (dir.lengthSq() === 0) dir.set(0, 0, 1);
-      dir.normalize();
-
-      camera.position.copy(lookTarget).add(dir.multiplyScalar(distance));
-      camera.near = Math.max(0.1, distance / 1000);
-      camera.far = distance * 1000;
-      camera.updateProjectionMatrix();
-    };
-
-    const onResize = () => {
-      const w = canvas.clientWidth || innerWidth;
-      const h = canvas.clientHeight || innerHeight;
-
-      renderer.setSize(w, h, false);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-
-      cam.aspect = w / h;
-      const vFovRad = 2 * Math.atan(Math.tan(hFovConst / 2) / cam.aspect);
-      cam.fov = (vFovRad * 180) / Math.PI;
-      cam.updateProjectionMatrix();
-
-      if (model) fitCameraToObject(model, cam);
-    };
-
+    // загрузка модели
+    let model;
     const loader = new GLTFLoader();
-    loader.load(
-      modelUrl,
-      (gltf) => {
-        model = gltf.scene;
-
-        model.traverse((m) => {
-          if (m.isMesh && m.material) {
-            if (m.material.map) m.material.map.colorSpace = THREE.SRGBColorSpace;
-            m.castShadow = true;
-            m.receiveShadow = true;
+    loader.load(modelUrl, (gltf) => {
+      model = gltf.scene;
+      model.traverse((o) => {
+        if (o.isMesh) {
+          o.castShadow = false;
+          o.receiveShadow = false;
+          if (o.material && o.material.map) {
+            o.material.map.colorSpace = THREE.SRGBColorSpace;
           }
-        });
+        }
+      });
+      model.rotation.set(ROT.x, ROT.y, ROT.z);
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      model.position.sub(center);
+      scene.add(model);
+      resize();
+      renderer.render(scene, camera);
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          if (onLoaded) onLoaded();
+        })
+      );
+    });
 
-        model.rotation.set(ROT.x, ROT.y, ROT.z);
-
-        const box = new THREE.Box3().setFromObject(model);
-        const center = box.getCenter(new THREE.Vector3());
-        model.position.sub(center);
-
-        modelGroup.add(model);
-
-        cam.aspect = (canvas.clientWidth || innerWidth) / (canvas.clientHeight || innerHeight);
-        const vFovRad = 2 * Math.atan(Math.tan(hFovConst / 2) / cam.aspect);
-        cam.fov = (vFovRad * 180) / Math.PI;
-        cam.updateProjectionMatrix();
-
-        fitCameraToObject(model, cam);
-
-        // Первый кадр + 2 rAF, чтобы точно "показано на экране"
-        renderer.render(scene, cam);
-        requestAnimationFrame(() => requestAnimationFrame(() => onLoaded?.()));
-      },
-      undefined,
-      () => {
-        // если хочешь — тут можно сделать fallback (но я не трогаю)
+    // изменение размера
+    const resize = () => {
+      const w = canvas.clientWidth || window.innerWidth;
+      const h = canvas.clientHeight || window.innerHeight;
+      renderer.setSize(w, h, false);
+      const aspect = w / h;
+      if (window.innerWidth < BREAKPOINT) {
+        camera.position.set(camSmall.x, camSmall.y, camSmall.z);
+        camera.aspect = aspect;
+        camera.fov = camSmall.fov;
+        camera.updateProjectionMatrix();
+      } else {
+        camera.position.set(camLarge.x, camLarge.y, camLarge.z);
+        camera.aspect = aspect;
+        const baseFovRad = THREE.MathUtils.degToRad(camLarge.fov);
+        const newFovRad = 2 * Math.atan(Math.tan(baseFovRad / 2) * (h / w));
+        camera.fov = THREE.MathUtils.radToDeg(newFovRad);
+        camera.updateProjectionMatrix();
       }
-    );
-
-    const renderLoop = () => {
-      if (model) model.rotation.y += 0.005;
-      cam.lookAt(lookTarget);
-      renderer.render(scene, cam);
-      rafId = requestAnimationFrame(renderLoop);
     };
 
-    renderLoop();
-    window.addEventListener("resize", onResize, { passive: true });
-    onResize();
+    window.addEventListener("resize", resize, { passive: true });
+    resize();
 
+    // анимационный цикл
+    let raf;
+    const loop = () => {
+      if (model) {
+        model.rotation.y += 0.004;
+      }
+      renderer.render(scene, camera);
+      raf = requestAnimationFrame(loop);
+    };
+    loop();
+
+    // очистка
     return () => {
-      window.removeEventListener("resize", onResize);
-      if (rafId) cancelAnimationFrame(rafId);
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+      scene.traverse((o) => {
+        if (o.isMesh) {
+          if (o.geometry) o.geometry.dispose();
+          if (Array.isArray(o.material)) {
+            o.material.forEach((m) => m.dispose());
+          } else if (o.material) {
+            o.material.dispose();
+          }
+        }
+      });
       renderer.dispose();
       scene.clear();
     };
-  }, [modelUrl, onLoaded]);
+  }, [modelUrl, onLoaded, camLarge, camSmall]);
 
-  return <canvas ref={ref} className="cup-canvas" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="cup-canvas"
+    />
+  );
 }

@@ -1,0 +1,22 @@
+
+/*HERO---------------------*/
+@media screen and (max-width: 768px) {
+    .hero__tagline , .hero__divider{display: none;}
+    .hero__button{
+        position: absolute;
+        bottom: clamp(140px, 23.4vw, 180px);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .hero__info{display: block;}
+    .hero-indent{width:100%;}
+    .hero__title{text-align: start;}
+    .hero__description{width: 60%;}
+    .hero__content{
+        display: block;
+        padding:clamp(140px, 23.4vw, 180px) var(--indents);
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1440px) {
+    .hero__title{font-size:clamp(32px, 3.6vw, 52px);}
+}

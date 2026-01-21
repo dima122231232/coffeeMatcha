@@ -88,6 +88,13 @@ body {
     border: none;
     font-family: var(--Inter);
     font-weight: 500;
+    transition: .2s;
+}
+.header--desktop .header__button:hover {
+    cursor: pointer;
+    background-color: var(--main-color);
+    color: var(--black-main-color);
+    border: 1px solid var(--black-main-color);
 }
 .header__burger--desktop{
     width: 40px;
@@ -109,8 +116,10 @@ body {
     will-change:transform;
 }
 .header__burger--desktop-helper{
-    width: 40px;
-    height: 40px;
+    width: 720px;
+    height: 420px;
+    transform-origin: top right;
+    will-change: transform, border-radius;
     background-color: var(--black-main-color);
     position: absolute;
     right: 0;
@@ -196,8 +205,21 @@ body {
     border: none;
     font-family: var(--Inter);
     font-weight: 600;
+    transition: .2s;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
-
+.hero__button svg{
+    transition: .2s;
+    transform: translateY(2px);
+}
+.hero__button:hover {
+    cursor: pointer;
+    background-color: var(--green-color);
+    color: var(--main-color);
+    transform: scale(1.025);
+}
 
 canvas {
   z-index: -2;

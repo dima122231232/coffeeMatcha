@@ -4,9 +4,9 @@
     .hero__tagline , .hero__divider{display: none;}
     .hero__button{
         position: absolute;
-        bottom: clamp(70px, 12.4vw, 90px);
+        bottom: clamp(98px, 16.2vw, 126px);
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%)!important;
     }
     .hero__info{display: block;}
     .hero-indent{width:100%;}

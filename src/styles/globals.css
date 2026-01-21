@@ -118,8 +118,8 @@ body {
 .header__burger--desktop-helper{
     width: 720px;
     height: 420px;
-    transform-origin: top right;
-    will-change: transform, border-radius;
+    will-change: clip-path, border-radius;
+    clip-path: inset(0 0 380px 680px round 0px);
     background-color: var(--black-main-color);
     position: absolute;
     right: 0;

@@ -4,7 +4,7 @@
     .hero__tagline , .hero__divider{display: none;}
     .hero__button{
         position: absolute;
-        bottom: clamp(140px, 23.4vw, 180px);
+        bottom: clamp(70px, 12.4vw, 90px);
         left: 50%;
         transform: translateX(-50%);
     }

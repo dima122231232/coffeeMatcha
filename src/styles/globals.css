@@ -299,9 +299,12 @@ canvas {
 .parallax_component > .parallax_image-col:nth-child(4) {
      padding-top:65vh;
 }
-.parallax_component > .parallax_image-col:nth-child(-n + 5):nth-child(odd) {
-  padding-top: 115vh;
+.parallax_component > .parallax_image-col:nth-child(1) {
+     padding-top: 85vh;
+}
+.parallax_component > .parallax_image-col:nth-child(3) {
+     padding-top: 135vh;
 }
 .parallax_component > .parallax_image-col:nth-child(5) {
-     padding-top: 135vh !important;;
+     padding-top: 115vh ;
 }

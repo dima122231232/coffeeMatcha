@@ -80,10 +80,10 @@ export default function Home() {
       <section className="drinks">
         <div className="drinks__bg"><div className="drinks__bg-stripes"></div></div>
         <div className="parallax_component">
-          <div className="parallax_image-col"><img src="/images/coffee/img 1.png" alt="coffee 1" data-speed=".5"/></div>
+          <div className="parallax_image-col"><img src="/images/coffee/img 1.png" alt="coffee 1" data-speed=".2"/></div>
           <div className="parallax_image-col"><img src="/images/coffee/img 2.png" alt="coffee 2" data-speed="0"/></div>
-          <div className="parallax_image-col"><img src="/images/coffee/img 3.png" alt="coffee 3" data-speed="-.1"/></div>
-          <div className="parallax_image-col"><img src="/images/coffee/img 4.png" alt="coffee 4" data-speed=".7"/></div>
+          <div className="parallax_image-col"><img src="/images/coffee/img 3.png" alt="coffee 3" data-speed="-.3"/></div>
+          <div className="parallax_image-col"><img src="/images/coffee/img 4.png" alt="coffee 4" data-speed=".3"/></div>
           <div className="parallax_image-col"><img src="/images/coffee/img 5.png" alt="coffee 5" data-speed=".1"/></div>
           <div className="parallax_image-col"><img src="/images/coffee/img 6.png" alt="coffee 6" data-speed="-1"/></div>
         </div>

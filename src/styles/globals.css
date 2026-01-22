@@ -257,6 +257,7 @@ canvas {
     top: 0;
     mix-blend-mode: difference;
     will-change: transform;
+       gap: 100px;
 }
 .drinks__text{
     text-align: center;
@@ -265,10 +266,24 @@ canvas {
     align-items: center;
     
 }
+.drinks__hot-cold--text{
+    position: absolute;
+}
 .drinks__title{
     font-size: var(--font-big_text-size);
-    padding-bottom:1vh;
+    padding-bottom:2vh;
     color:var(--main-color);
+    font-weight: 500;
+    width: 75%;
+    line-height: 90%;
+}
+.drinks__text-anim span{
+    clip-path: polygon(0 0%, 100% 0%, 100% 97%, 0% 97%);
+    position: relative;
+    display: inline-block;
+}
+.drinks__hot-cold--text span{
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
 }
 .drinks__description{
     max-width: clamp(280px, 20.8vw, 400px);
@@ -287,7 +302,7 @@ canvas {
 }
 .parallax_image-col {
     height: 200vh;
-    width:95%;
+    width:80%;
     margin-top: 100vh;
     overflow: hidden;
 }

@@ -19,19 +19,18 @@ export function splitTextToSpans(selector, { className = "word" } = {}) {
     }
 
     nodes.forEach(node => {
-      const text = node.nodeValue; // не trim()
+      const text = node.nodeValue; 
       const frag = document.createDocumentFragment();
 
-      // Токены: пробелы отдельно, всё остальное (слово или символы) — отдельно
       const parts = text.match(/\s+|[^\s]+/gu) || [text];
 
       for (const part of parts) {
         if (/^\s+$/u.test(part)) {
-          frag.appendChild(document.createTextNode(part)); // сохраняем пробелы как есть
+          frag.appendChild(document.createTextNode(part));
         } else {
           const span = document.createElement("span");
           if (className) span.className = className;
-          span.textContent = part; // тут может быть "hello" или "#$%<>?"
+          span.textContent = part;
           frag.appendChild(span);
         }
       }

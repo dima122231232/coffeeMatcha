@@ -13,6 +13,7 @@ const ease = CustomEase.create("menu", "M0,0 C.7,0 .3,1 1,1");
 
 export default function Home() {
   const ready = useRef(false);
+
   const play = useCallback(() => {
     if (ready.current) return;
     ready.current = true;
@@ -24,37 +25,27 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // разбиваем текст на спаны
     splitTextToSpans(".StartAnimation", { className: "word" });
+    splitTextToSpans(".drinks__text-anim", { className: "word" });
 
-    // парallax по data-speed
     const ctx = gsap.context(() => {
       gsap.utils.toArray(".parallax_image-col").forEach(col => {
         const img = col.querySelector("img[data-speed]");
         if (!img) return;
         const speed = parseFloat(img.dataset.speed) || 0;
-        const distance = col.offsetHeight * speed; // высота колонки × скорость
-        gsap.fromTo(
-          img,
-          { y: -distance / 2 },
-          {
-            y: distance / 2,
-            ease: "none",
-            scrollTrigger: {
-              trigger: col,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-              invalidateOnRefresh: true,
-            },
-          }
-        );
-      });
-      // пересчитываем позиции после загрузки картинок
+        const distance = col.offsetHeight * speed;
+        gsap.fromTo( img ,{ y: -distance / 2 },{y: distance / 2,ease: "none",scrollTrigger: {trigger: col,start: "top bottom",end: "bottom top",scrub: true,invalidateOnRefresh: true}})});
+
       ScrollTrigger.refresh();
     });
+
+    // const drinks_spans = gsap.utils.toArray(".drinks__specialty--text .word");
+    gsap.fromTo(".drinks__specialty--text .word",{clipPath: "polygon(0 0%, 100% 0%, 100% 97%, 0% 97%)"},{clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",stagger: 0.05,ease: "none",scrollTrigger: {trigger: ".drinks",start: "40% top",end: "50% top",scrub: true}});
+    gsap.fromTo(".drinks__hot-cold--text .word",{clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)"},{clipPath: "polygon(0 100%, 100% 100%, 100% 0%, 0% 0%)",stagger: 0.05,ease: "none",scrollTrigger: {trigger: ".drinks",start: "50% top",end: "60% top",scrub: true}});
+
     return () => ctx.revert();
   }, []);
+
 
   return (
     <main>
@@ -83,15 +74,19 @@ export default function Home() {
           <div className="parallax_image-col"><img src="/images/coffee/img 1.png" alt="coffee 1" data-speed=".2"/></div>
           <div className="parallax_image-col"><img src="/images/coffee/img 2.png" alt="coffee 2" data-speed="0"/></div>
           <div className="parallax_image-col"><img src="/images/coffee/img 3.png" alt="coffee 3" data-speed="-.3"/></div>
-          <div className="parallax_image-col"><img src="/images/coffee/img 4.png" alt="coffee 4" data-speed=".3"/></div>
+          <div className="parallax_image-col"><img src="/images/coffee/img 4.png" alt="coffee 4" data-speed=".6"/></div>
           <div className="parallax_image-col"><img src="/images/coffee/img 5.png" alt="coffee 5" data-speed=".1"/></div>
-          <div className="parallax_image-col"><img src="/images/coffee/img 6.png" alt="coffee 6" data-speed="-1"/></div>
+          <div className="parallax_image-col"><img src="/images/coffee/img 6.png" alt="coffee 6" data-speed="-.1"/></div>
         </div>
         <div className="drinks__content">
           <div className="drinks__content-wrapper">
-            <div className="drinks__text">
-              <h6 className="drinks__title">Specialty drinks</h6>
-              <p className="drinks__description">Signature drinks made with thoughtfully selected ingredients, inspired by Japanese precision and contemporary coffee culture.</p>
+            <div className="drinks__text drinks__specialty--text">
+              <h6 className="drinks__title drinks__text-anim">Specialt drinks available...</h6>
+              <p className="drinks__description drinks__text-anim">Signature drinks made with thoughtfully selected ingredients, inspired by Japanese precision and contemporary coffee culture.</p>
+            </div>
+            <div className="drinks__text drinks__hot-cold--text">
+              <h6 className="drinks__title drinks__text-anim">Hot and cold drinks available</h6>
+              <p className="drinks__description drinks__text-anim">Carefully crafted drinks made with high-quality ingredients, balancing smooth warmth and crisp, refreshing character.</p>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
     --font-paragraph-size: clamp(0.75rem, 0.511rem + 1.02vw, 1rem);
     --font-button-size: clamp(0.75rem, 0.6rem + 0.6vw, 0.875rem);
     --font-large_text-size:clamp(22px, 2.2vw, 42px);
+    --font-big_text-size:clamp(2rem, 1rem + 6vw, 4.8rem);
 
     --cup-size:100;
     --cup-size-block: calc((var(--cup-size) * 1vw) * .2);
@@ -10,6 +11,7 @@
     --green-color:#345D31;
     --lite-green-color:#E6E9DF;
     --black-main-color:#191919;
+    --polosa-color:#707170;
 
     --indents:clamp(16px, 2.08vw, 40px);
 
@@ -21,7 +23,7 @@ body {
   font-family: var(--NB-International-Pro);
   font-weight: 500;
   background-color: var(--main-color);
-  height: 200vh;
+  height: 700vh;
 }
 * {
   margin: 0;
@@ -128,20 +130,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*HERO--------------------------------------*/
 .cup-canvas{
     width:100%;
@@ -221,4 +209,99 @@ body {
 
 canvas {
   z-index: -2;
+}
+
+
+/*DRINKS--------------------------------------*/
+.drinks{
+    position: relative;
+    height: 400vh;
+}
+.drinks__bg-stripes {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(243,244,242,0) 0%, #F3F4F2 100%);
+  background-size: 100% 50vh;
+  background-repeat: no-repeat;
+} 
+
+.drinks__bg {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  height: 100%;
+  pointer-events: none;
+
+  background: repeating-linear-gradient(
+    to right,
+    var(--polosa-color) 0 1px,
+    transparent 1px calc(100% / 6)
+  );
+  z-index: -1;
+}
+
+.drinks__content{
+    height:100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.drinks__content-wrapper{
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    mix-blend-mode: difference;
+    will-change: transform;
+}
+.drinks__text{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.drinks__title{
+    font-size: var(--font-big_text-size);
+    padding-bottom:1vh;
+    color:var(--main-color);
+}
+.drinks__description{
+    max-width: clamp(280px, 20.8vw, 400px);
+    font-size: var(--font-paragraph-size);
+    color:var(--main-color);
+    font-weight: 300;
+}
+.parallax_component{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    height: 250vh;
+    position: relative;
+
+    justify-items: center;
+    align-items: center; 
+}
+.parallax_image-col {
+    height: 200vh;
+    width:95%;
+    margin-top: 100vh;
+    overflow: hidden;
+}
+.parallax_image-col img{
+    width: 100%;
+    height: auto;
+    will-change: transform;
+}
+.parallax_component > .parallax_image-col:nth-child(4) {
+     padding-top:65vh;
+}
+.parallax_component > .parallax_image-col:nth-child(-n + 5):nth-child(odd) {
+  padding-top: 115vh;
+}
+.parallax_component > .parallax_image-col:nth-child(5) {
+     padding-top: 135vh !important;;
 }

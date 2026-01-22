@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
         <title>Coffee Matcha</title>
-      <body>
+      <body style={{backgroundColor:"#F3F4F2"}}>
         <Header/>
         <SmoothScrolling>
           {children}

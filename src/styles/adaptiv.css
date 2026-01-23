@@ -1,4 +1,5 @@
 
+
 /*HERO---------------------*/
 @media screen and (max-width: 768px) {
     .hero__tagline , .hero__divider{display: none;}
@@ -16,9 +17,8 @@
         display: block;
         padding:clamp(140px, 23.4vw, 180px) var(--indents);
     }
-    .parallax_component > .parallax_image-col:nth-child(4) {
-     transform: translate(0)!important;
-}
+    .parallax_component > .parallax_image-col:nth-child(2) img,
+    .parallax_component > .parallax_image-col:nth-child(4) img {transform: none !important;}
 }
 @media screen and (min-width: 768px) and (max-width: 1440px) {
     .hero__title{font-size:clamp(32px, 3.6vw, 52px);}

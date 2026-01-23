@@ -39,9 +39,9 @@ export default function Home() {
       ScrollTrigger.refresh();
     });
 
-    // const drinks_spans = gsap.utils.toArray(".drinks__specialty--text .word");
-    gsap.fromTo(".drinks__specialty--text .word",{clipPath: "polygon(0 0%, 100% 0%, 100% 97%, 0% 97%)"},{clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",stagger: 0.05,ease: "none",scrollTrigger: {trigger: ".drinks",start: "40% top",end: "50% top",scrub: true}});
-    gsap.fromTo(".drinks__hot-cold--text .word",{clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)"},{clipPath: "polygon(0 100%, 100% 100%, 100% 0%, 0% 0%)",stagger: 0.05,ease: "none",scrollTrigger: {trigger: ".drinks",start: "50% top",end: "60% top",scrub: true}});
+    gsap.fromTo(".drinks__specialty--text .word",{clipPath: "polygon(0 0%, 100% 0%, 100% 97%, 0% 97%)"},{clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",stagger: 0.05,ease: "none",scrollTrigger: {trigger: ".drinks",start: "25% top",end: "35% top",scrub: true}});
+    gsap.fromTo(".drinks__hot-cold--text .word",{clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)"},{clipPath: "polygon(0 100%, 100% 100%, 100% 0%, 0% 0%)",stagger: 0.05,ease: "none",scrollTrigger: {trigger: ".drinks",start: "35% top",end: "45% top",scrub: true}});
+    gsap.to(".drinks-transition__column",{transform:"translateY(0)",ease: "none",scrollTrigger: {trigger: ".drinks",start: "100% bottom",end: "130% bottom",scrub: true}});
 
     return () => ctx.revert();
   }, []);
@@ -90,6 +90,17 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="drinks-transition">
+            <div className="drinks-transition__column"></div>
+            <div className="drinks-transition__column"></div>
+            <div className="drinks-transition__column"></div>
+            <div className="drinks-transition__column"></div>
+            <div className="drinks-transition__column"></div>
+            <div className="drinks-transition__column"></div>
+        </div>
+      </section>
+      <section className="about">
+
       </section>
     </main>
   );

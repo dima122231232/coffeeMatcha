@@ -14,7 +14,7 @@
     --polosa-color:#707170;
 
     --indents:clamp(16px, 2.08vw, 40px);
-    --step: 35vh;
+    --step: 25vh;
 
     --Inter:"Inter", sans-serif;
     --NB-International-Pro:"NB-International-Pro", sans-serif;
@@ -224,7 +224,7 @@ canvas {
 /*DRINKS--------------------------------------*/
 .drinks{
     position: relative;
-    height: 350vh;
+    height: 300vh;
 }
 .drinks__bg-stripes {
   position: absolute;
@@ -333,7 +333,7 @@ canvas {
 }
 
 .drinks-transition{
-    bottom: -100vh;
+    bottom: -50vh;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     height: 100vh;
@@ -351,7 +351,7 @@ canvas {
     background-color: var(--lite-green-color);
     width: 100%;
     height: 100%;
-    will-change: transform;
+     will-change: transform;
 }
 .drinks-transition__column:nth-child(2) { transform: translateY(calc(var(--step) * 3)); }
 .drinks-transition__column:nth-child(3) { transform: translateY(calc(var(--step) * 2)); }

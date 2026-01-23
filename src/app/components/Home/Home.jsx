@@ -7,6 +7,7 @@ import { CustomEase } from "gsap/CustomEase";
 import Cup from "@/app/components/Cup/Cup";
 import HeroButton from "@/app/components/Buttons/HeroButton";
 import { splitTextToSpans } from "@/app/components/Algoritms/splitTextToSpans";
+import Button_wth_ind from "../Buttons/Button_without_indents";
 
 gsap.registerPlugin(CustomEase, ScrollTrigger);
 const ease = CustomEase.create("menu", "M0,0 C.7,0 .3,1 1,1");
@@ -25,8 +26,8 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    splitTextToSpans(".StartAnimation", { className: "word" });
-    splitTextToSpans(".drinks__text-anim", { className: "word" });
+    [".StartAnimation", ".drinks__text-anim", ".about__title"]
+    .forEach(s => splitTextToSpans(s, { className: "word" }));
 
     const ctx = gsap.context(() => {
       gsap.utils.toArray(".parallax_image-col").forEach(col => {
@@ -38,11 +39,12 @@ export default function Home() {
 
       ScrollTrigger.refresh();
     });
-
+    // SECTION 2 
     gsap.fromTo(".drinks__specialty--text .word",{clipPath: "polygon(0 0%, 100% 0%, 100% 97%, 0% 97%)"},{clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",stagger: 0.05,ease: "none",scrollTrigger: {trigger: ".drinks",start: "25% top",end: "35% top",scrub: true}});
     gsap.fromTo(".drinks__hot-cold--text .word",{clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)"},{clipPath: "polygon(0 100%, 100% 100%, 100% 0%, 0% 0%)",stagger: 0.05,ease: "none",scrollTrigger: {trigger: ".drinks",start: "35% top",end: "45% top",scrub: true}});
     gsap.to(".drinks-transition__column",{transform:"translateY(0)",ease: "none",scrollTrigger: {trigger: ".drinks",start: "100% bottom",end: "130% bottom",scrub: true}});
-
+    // SECTION 3
+    gsap.to(".about__title .word",{opacity:1,ease: "none",stagger: 0.065,scrollTrigger: {trigger: ".about",start: "start bottom",end: "bottom bottom",scrub: true}});
     return () => ctx.revert();
   }, []);
 
@@ -51,7 +53,7 @@ export default function Home() {
     <main>
       <div className="vlock"></div>
 
-      <section className="hero">
+      <section className="hero" aria-labelledby="start-page">
         <div className="hero__content">
           <Cup modelUrl="/images/cup.glb" onLoaded={play} />
           <div className="hero__info">
@@ -99,9 +101,23 @@ export default function Home() {
             <div className="drinks-transition__column"></div>
         </div>
       </section>
-      <section className="about">
+        <section className="about" aria-labelledby="about-title">
+            <div className="about__block">
+                <p className="about__label">ABOUT US</p>
 
-      </section>
+                <h6 className="about__title">We are a modern café focused on quality, simplicity, and intention. We work with carefully sourced matcha and specialty coffee, paying attention to origin, process, and balance. Every detail — from ingredients to atmosphere — is designed to create a calm, thoughtful experience. </h6>
+                <p className="about__text">
+                In August 2020, we launched our first location, a 5x10 coffee cart nestled in the garden of the
+                Wythe diner in Brooklyn. Our operation was simple and our footprint was small, which let us
+                remove costs that didn’t benefit our customers or baristas. This allowed us to source top of the
+                range specialty coffees from around the world, serve clean and fresh food sourced locally, and
+                pay our baristas above market wages.
+                </p>
+                <Button_wth_ind className="about__button">View all information about us</Button_wth_ind>
+
+            </div>
+        </section>
+
     </main>
   );
 }

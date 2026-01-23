@@ -1,6 +1,7 @@
 :root{
     --font-paragraph-size: clamp(0.75rem, 0.511rem + 1.02vw, 1rem);
     --font-button-size: clamp(0.75rem, 0.6rem + 0.6vw, 0.875rem);
+    --font-small_title-size:clamp(0.875rem, 0.6rem + 1.5vw, 1.375rem);
     --font-large_text-size:clamp(22px, 2.2vw, 42px);
     --font-big_text-size:clamp(2rem, 1rem + 6vw, 4.8rem);
 
@@ -224,7 +225,7 @@ canvas {
 /*DRINKS--------------------------------------*/
 .drinks{
     position: relative;
-    height: 300vh;
+    height: 350vh;
 }
 .drinks__bg-stripes {
   position: absolute;
@@ -272,6 +273,7 @@ canvas {
     display: flex;
     flex-direction: column;
     align-items: center;
+    pointer-events: none;
     
 }
 .drinks__hot-cold--text{
@@ -333,7 +335,7 @@ canvas {
 }
 
 .drinks-transition{
-    bottom: -50vh;
+    bottom: -100vh;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     height: 100vh;
@@ -366,7 +368,58 @@ canvas {
 
 /*ABOUT ----------------------------*/
 .about{
-    height: 200vh;
-    background-color: var(--lite-green-color);
-    margin-top: 100vh;
+    height: 100vh;
+    position: relative;
+    background-color:var(--lite-green-color);
+    margin-top: 75vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
 }
+.about__block{
+    width: 80%;
+    color: var(--green-color);
+}
+.about__label{
+    font-size:var(--font-small_title-size);
+    font-family: var(--Inter);
+    font-weight: 600;
+}
+.about__title{
+    font-size: var(--font-large_text-size);
+    font-weight: 500;
+    line-height:95%;
+    letter-spacing:-.03rem;
+    text-indent: 25%;
+    margin-bottom:4vh;
+}
+.about__title .word{
+        opacity: .2;
+}
+.about__text{
+    font-size: var(--font-paragraph-size);
+    width:50%;
+    float: right;
+    opacity: .4;
+}
+.bt-style{
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+    text-align: start;
+    cursor: pointer;  
+    transition: .2s; 
+}
+.bt-style:hover{
+    transform: scale(.95);
+}
+.about__button {
+    font-size: var(--font-small_title-size);
+    color: var(--green-color);
+    width:clamp(12.5rem, 8.03rem + 19.08vw, 17.1875rem);
+}
+.bt-style svg{
+    margin-left: .75vw;
+    height: 100%;
+}
+

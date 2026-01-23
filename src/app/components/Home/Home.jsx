@@ -55,7 +55,7 @@ export default function Home() {
 
       <section className="hero" aria-labelledby="start-page">
         <div className="hero__content">
-          <Cup modelUrl="/images/cup.glb" onLoaded={play} />
+          {/* <Cup modelUrl="/images/cup.glb" onLoaded={play} /> */}
           <div className="hero__info">
             <div className="hero__title hero-indent StartAnimation">premium <br />coffee & matcha</div>
             <div className="hero__divider"></div>
@@ -118,6 +118,52 @@ export default function Home() {
             </div>
         </section>
 
+        <div className="home-shop">
+            <div className="home-shop__list">
+                
+                <div className="home-shop__item">
+                    <div className="home-shop__image">
+                        <img src="/images/product/item 1.png" alt="Darker roast coffee beans" />
+                    </div>
+                    <div className="home-shop__content">
+                        <div className="home-shop__header">
+                            <h6 className="home-shop__title">Darker Roast</h6>
+                            <p className="home-shop__price">from 12,95$</p>
+                        </div>
+                        <p className="home-shop__description">Deep, rich flavor with bold chocolate notes</p>
+                    </div>
+                </div>
+
+                <div className="home-shop__item">
+                    <div className="home-shop__image">
+                        <img src="/images/product/item 2.png" alt="Darker roast coffee beans" />
+                    </div>
+                    <div className="home-shop__content">
+                        <div className="home-shop__header">
+                            <h6 className="home-shop__title">Darker Roast</h6>
+                            <p className="home-shop__price">from 12,95$</p>
+                        </div>
+                        <p className="home-shop__description">Deep, rich flavor with bold chocolate notes</p>
+                    </div>
+                </div>
+
+                <div className="home-shop__item">
+                    <div className="home-shop__image">
+                        <img src="/images/product/item 3.png" alt="Darker roast coffee beans" />
+                    </div>
+                    <div className="home-shop__content">
+                        <div className="home-shop__header">
+                            <h6 className="home-shop__title">Darker Roast</h6>
+                            <p className="home-shop__price">from 12,95$</p>
+                        </div>
+                        <p className="home-shop__description">Deep, rich flavor with bold chocolate notes</p>
+                    </div>
+                </div>
+
+        </div>
+
+        <div className="home-shop__divider"></div>
+        </div>
     </main>
   );
 }

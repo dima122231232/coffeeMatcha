@@ -42,7 +42,7 @@
 
 }
 @media screen and (max-width: 425px){ 
-    :root{--step: 50px;}
+    :root{--step: 65px;}
     .parallax_component,.drinks-transition {grid-template-columns: repeat(4, 1fr);}
     .drinks__bg,.drinks-transition {background: repeating-linear-gradient(to right, var(--polosa-color) 0 1px, transparent 1px calc(100% / 4));}
     .drinks-transition__column:nth-child(5),.drinks-transition__column:nth-child(6),.parallax_image-col:nth-child(5),.parallax_image-col:nth-child(6){display: none;}

@@ -21,6 +21,24 @@
     .about__text{width: 70%;}
     .about__button{margin-top: 4vh;font-weight: 600;font-family: var(--Inter);}
     :root{--step: 75px;}
+    .home-shop__item:nth-child(2),.home-shop__item:nth-child(3){display: none;}
+
+    .home-shop__image{
+        width: 90vw;
+        height:45vw;
+    }
+    .home-shop__image img{
+        width: 45vw;
+        margin:0 22.5vw;
+        height: 45vw;
+    }
+    .home-shop__content{max-width: 90vw}
+    .home-shop__title{max-width:50vw;}
+    .about{height: 125vh;}
+    .item-count--num{padding:4px 8px}
+}
+@media (min-width: 48rem) { 
+
 }
 @media screen and (min-width: 768px) and (max-width: 1440px) {
     .hero__title{font-size:clamp(32px, 3.6vw, 52px);}

@@ -36,7 +36,21 @@ body {
   background-color: var(--main-color);
   /* height: 1000vh; */
 }
-
+html.lenis {
+    height: auto;
+}
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
 * {
   margin: 0;
   padding: 0;
@@ -44,7 +58,9 @@ body {
 }
 a{text-decoration: none;}li{list-style: none;}
 
-
+html {
+    height: auto !important;
+}
 
 /*ADD--------------------------------------*/
 .StartAnimation .word{
@@ -546,7 +562,7 @@ canvas {
 
 /*footer---------------------------------*/
 .footer {
-    background-color: var(--lite-green-color);
+    background-color: var(--main-color);
     display: flex;
     padding:50px;
     color: var(--black-main-color);
@@ -577,3 +593,10 @@ canvas {
 
 .footer__logo {width: clamp(65px, 5.2vw, 100px);}
 .footer__note {opacity:.35;}
+.footer-spacer {
+    height: max(
+        0px,
+        calc(90vh - 75svh)
+    );
+    
+}

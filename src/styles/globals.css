@@ -431,6 +431,7 @@ canvas {
     position: relative;
     background-color: var(--green-color);
     padding:4vh 0;
+    will-change: transform;
 }
 .home-shop__list{
     display: flex;
@@ -506,6 +507,11 @@ canvas {
     cursor: pointer;
     transition: .2s;
     padding:1vw;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+.home-shop__nav-btn:active {
+  background-color: transparent;
 }
 .home-shop__nav-btn:hover{
     transform: scale(.95);

@@ -36,6 +36,9 @@
     .home-shop__title{max-width:50vw;}
     .about{height: 125vh;}
     .item-count--num{padding:4px 8px}
+    .home-shop__nav-btn:hover{
+    transform: none;
+}
 }
 @media (min-width: 48rem) { 
 

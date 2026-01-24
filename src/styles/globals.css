@@ -34,13 +34,15 @@ body {
   font-family: var(--NB-International-Pro);
   font-weight: 500;
   background-color: var(--main-color);
-  height: 1000vh;
+  /* height: 1000vh; */
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+a{text-decoration: none;}li{list-style: none;}
 
 
 
@@ -442,9 +444,6 @@ canvas {
     height: 25vw;
     width: 25vw;
     background-color:var(--lite-green-color);
-    /* display: flex; */
-    /* align-items:center;
-    justify-content: center; */
     overflow: hidden;
 }
 .home-shop__image-items{
@@ -543,3 +542,38 @@ canvas {
     color: var(--white);
     border: 1px solid var(--white);
 }
+
+
+/*footer---------------------------------*/
+.footer {
+    background-color: var(--lite-green-color);
+    display: flex;
+    padding:50px;
+    color: var(--black-main-color);
+    font-size: 1rem;
+}
+.footer a{
+    color: var(--black-main-color);
+    font-family:var(--Inter);
+    font-weight: 500;
+    line-height: 140%;
+}
+.footer__left {    
+    display: flex;
+    width:50%;
+    justify-content: space-around;
+}
+.footer__right {
+    margin:0 auto;
+}
+.footer__right-wrapper{
+    width: 21.875rem;
+}
+
+.footer__copyright{
+    font-weight:600;
+    font-family: var(--Inter);
+}
+
+.footer__logo {width: clamp(65px, 5.2vw, 100px);}
+.footer__note {opacity:.35;}

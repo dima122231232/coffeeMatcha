@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import "@/styles/adaptiv.css";
 import SmoothScrolling from "@/app/SmoothScrolling";
 import Header from "@/app/components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 export default function RootLayout({ children }) {
   return (
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
         <SmoothScrolling>
           {children}
         </SmoothScrolling>
+        <Footer/>
       </body>
     </html>
   );

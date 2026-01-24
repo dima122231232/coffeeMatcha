@@ -141,8 +141,7 @@ export default function Home() {
             },
         })
         .add(() => setStart(nextStart))
-        gsap.to(cnt,{clipPath: "polygon(0 0%, 0 0, 0 100%, 0% 100%)", duration: .15})
-        gsap.fromTo(cnt,{ clipPath: "polygon(0 0%, 0 0, 0 100%, 0% 100%)" }, { clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0% 100%)",delay:.15, duration: 0.35, ease: "power2.inOut"});
+        gsap.fromTo(cnt,{ clipPath: "polygon(0 0%, 0 0, 0 100%, 0% 100%)" }, { clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0% 100%)",delay:.25, duration: 0.35, ease: "power2.inOut"});
     };
 
     const onPrev = () => {
@@ -214,7 +213,7 @@ export default function Home() {
         gsap.to(".about__title .word", { opacity: 1, ease: "none", stagger: 0.065, scrollTrigger: { trigger: ".about", start: "20% bottom", end: "bottom bottom", scrub: true } });
 
         gsap.set(".home-shop", { force3D: true });
-        gsap.fromTo(".home-shop", { yPercent: 0 }, { yPercent: -70, ease: "none", scrollTrigger: { trigger: ".home-shop", start: "top bottom", end: "bottom top", scrub: .8,invalidateOnRefresh: true} });
+        // gsap.fromTo(".home-shop", { yPercent: 0 }, { yPercent: -70, ease: "none", scrollTrigger: { trigger: ".home-shop", start: "top bottom", end: "bottom top", scrub: .8,invalidateOnRefresh: true} });
         return () => ctx.revert();
     }, []);
 
@@ -247,22 +246,22 @@ export default function Home() {
 
                 <div className="parallax_component">
                     <div className="parallax_image-col">
-                        <img src="/images/coffee/img 1.png" alt="coffee 1" data-speed=".2" />
+                        <img src="/images/coffee/img 1.png" alt="coffee 1" data-speed=".2" loading="lazy"/>
                     </div>
                     <div className="parallax_image-col">
-                        <img src="/images/coffee/img 2.png" alt="coffee 2" data-speed="0" />
+                        <img src="/images/coffee/img 2.png" alt="coffee 2" data-speed="0" loading="lazy"/>
                     </div>
                     <div className="parallax_image-col">
-                        <img src="/images/coffee/img 3.png" alt="coffee 3" data-speed="-.3" />
+                        <img src="/images/coffee/img 3.png" alt="coffee 3" data-speed="-.3" loading="lazy"/>
                     </div>
                     <div className="parallax_image-col">
-                        <img src="/images/coffee/img 4.png" alt="coffee 4" data-speed=".6" />
+                        <img src="/images/coffee/img 4.png" alt="coffee 4" data-speed=".6" loading="lazy"/>
                     </div>
                     <div className="parallax_image-col">
-                        <img src="/images/coffee/img 5.png" alt="coffee 5" data-speed=".1" />
+                        <img src="/images/coffee/img 5.png" alt="coffee 5" data-speed=".1" loading="lazy"/>
                     </div>
                     <div className="parallax_image-col">
-                        <img src="/images/coffee/img 6.png" alt="coffee 6" data-speed="-.1" />
+                        <img src="/images/coffee/img 6.png" alt="coffee 6" data-speed="-.1" loading="lazy"/>
                     </div>
                 </div>
 
@@ -304,7 +303,7 @@ export default function Home() {
                         <div className="home-shop__image">
                             <div className="home-shop__image-items" ref={imagesItemRef1}>
                                 {strip(0).map((p, i) => (
-                                    <img key={i} src={p.img} alt={p.alt} />
+                                    <img key={i} src={p.img} alt={p.alt} loading="lazy"/>
                                 ))}
                             </div>
                         </div>
@@ -321,7 +320,7 @@ export default function Home() {
                         <div className="home-shop__image">
                             <div className="home-shop__image-items" ref={imagesItemRef2}>
                                 {strip(1).map((p, i) => (
-                                    <img key={i} src={p.img} alt={p.alt} />
+                                    <img key={i} src={p.img} alt={p.alt} loading="lazy"/>
                                 ))}
                             </div>
                         </div>
@@ -338,7 +337,7 @@ export default function Home() {
                         <div className="home-shop__image">
                             <div className="home-shop__image-items" ref={imagesItemRef3}>
                                 {strip(2).map((p, i) => (
-                                    <img key={i} src={p.img} alt={p.alt} />
+                                    <img key={i} src={p.img} alt={p.alt} loading="lazy"/>
                                 ))}
                             </div>
                         </div>

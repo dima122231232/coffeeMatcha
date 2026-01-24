@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <header className="header header--desktop">
       <div className="header__wrapper">
-        <Logo className="header__logo" />
+        <Logo className="header__logo logo" />
         <div className="header__actions">
           <button className="header__button StartAnimation">buy now</button>
 

@@ -66,7 +66,7 @@ function useIsMobile(breakpoint = 768) {
 export default function Home() {
     const ready = useRef(false);
     const vw = use1vw();
-    const { mounted, isMobile } = useIsMobile(768);
+    const { mounted, isMobile } = useIsMobile(770);
 
     const imagesItemRef1 = useRef(null),imagesItemRef2 = useRef(null), imagesItemRef3 = useRef(null);
     const contentRef1 = useRef(null), contentRef2 = useRef(null), contentRef3 = useRef(null);
@@ -212,7 +212,7 @@ export default function Home() {
         gsap.fromTo(".drinks__hot-cold--text .word", { clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)" }, { clipPath: "polygon(0 100%, 100% 100%, 100% 0%, 0% 0%)", stagger: 0.05, ease: "none", scrollTrigger: { trigger: ".drinks", start: "35% top", end: "45% top", scrub: true } });
         gsap.to(".drinks-transition__column", { transform: "translateY(0)", ease: "none", scrollTrigger: { trigger: ".drinks", start: "100% bottom", end: "130% bottom", scrub: true } });
         gsap.to(".about__title .word", { opacity: 1, ease: "none", stagger: 0.065, scrollTrigger: { trigger: ".about", start: "20% bottom", end: "bottom bottom", scrub: true } });
-        gsap.fromTo(".home-shop", { y: 0 }, { y: "-70%", ease: "none", scrollTrigger: { trigger: ".home-shop", start: "top bottom", end: "bottom top", scrub: true } });
+        gsap.fromTo(".home-shop", { transform:"translateY(0%)" }, { transform: "translateY(-70%)", ease: "none", scrollTrigger: { trigger: ".home-shop", start: "top bottom", end: "bottom top", scrub: true } });
 
         return () => ctx.revert();
     }, []);

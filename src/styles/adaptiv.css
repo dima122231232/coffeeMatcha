@@ -34,14 +34,22 @@
     }
     .home-shop__content{max-width: 90vw}
     .home-shop__title{max-width:50vw;}
-    .about{height: 125vh;}
+    .about{margin-top: 50vh;}
     .item-count--num{padding:4px 8px}
-    .home-shop__nav-btn:hover{
-    transform: none;
-}
-}
-@media (min-width: 48rem) { 
+    .home-shop__nav-btn:hover{transform: none}
+    .drinks-transition{height: 50vh;}
+    .home-shop__nav{position: static;transform: none}
 
+}
+@media screen and (max-width: 425px){ 
+    :root{--step: 50px;}
+    .parallax_component,.drinks-transition {grid-template-columns: repeat(4, 1fr);}
+    .drinks__bg,.drinks-transition {background: repeating-linear-gradient(to right, var(--polosa-color) 0 1px, transparent 1px calc(100% / 4));}
+    .drinks-transition__column:nth-child(5),.drinks-transition__column:nth-child(6),.parallax_image-col:nth-child(5),.parallax_image-col:nth-child(6){display: none;}
+    .drinks-transition{height:300px;}
+    .about {margin-top:300px;padding-bottom:300px;height: auto;}
+    .home-shop__item-count--block{display: none;}
+    .home-shop__divider > div:nth-child(2) { order: 2; }
 }
 @media screen and (min-width: 768px) and (max-width: 1440px) {
     .hero__title{font-size:clamp(32px, 3.6vw, 52px);}

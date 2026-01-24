@@ -5,7 +5,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 // вращение модели
 const ROT = { x: 0, y: -Math.PI / 2, z: -0.25 };
-const BREAKPOINT = 768;
+const BREAKPOINT = 770;
 
 export default function Cup({
   modelUrl = "/images/cup.glb",

@@ -224,7 +224,7 @@ export default function Home() {
 
             <section className="hero" aria-labelledby="start-page">
                 <div className="hero__content">
-                    <Cup modelUrl="/images/cup.glb" onLoaded={play} />
+                    {/* <Cup modelUrl="/images/cup.glb" onLoaded={play} /> */}
                     <div className="hero__info">
                         <div className="hero__title hero-indent StartAnimation">
                             premium <br />

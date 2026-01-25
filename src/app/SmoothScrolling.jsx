@@ -10,7 +10,7 @@ export default function SmoothScrolling({ children }) {
     lenisRef.current = new Lenis({
       smooth: true,
       lerp: 0.075,
-      touchMultiplier: 1.5,
+      touchMultiplier: 1,
     });
 
     function raf(time) {

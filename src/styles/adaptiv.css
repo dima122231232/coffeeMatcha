@@ -2,17 +2,17 @@
     .hero__tagline , .hero__divider{display: none;}
     .hero__button{
         position: absolute;
-        bottom: clamp(98px, 16.2vw, 126px);
-        left: 50%;
-        transform: translateX(-50%)!important;
+        bottom: var(--indents);
+        left: var(--indents);
+        font-weight:700;
     }
-    .hero__info{display: block;}
+    .hero__info{flex-direction: column;gap:25vh;}
     .hero-indent{width:100%;}
-    .hero__title{text-align: start;}
-    .hero__description{width: 60%;}
+    .hero__title{text-align: start; font-size:60px;}
+    .hero__description{width: 280px;font-size: 24px;float: right;text-align: end;opacity:.5;}
+    .cup-canvas{display: none;}
     .hero__content{
-        display: block;
-        padding:clamp(120px, 20vw, 160px) var(--indents);
+        padding: 25vh var(--indents);
     }
     .parallax_component > .parallax_image-col:nth-child(2) img,
     .parallax_component > .parallax_image-col:nth-child(4) img {transform: none !important;}
@@ -34,20 +34,23 @@
     }
     .home-shop__content{max-width: 90vw}
     .home-shop__title{max-width:50vw;}
-    .about{margin-top: 40vh;padding-bottom:200px;}
+    .about{margin-top: 40vh;padding-bottom:150px;}
     .item-count--num{padding:4px 8px}
     .home-shop__nav-btn:hover{transform: none}
     .drinks-transition{height: 50vh;}
     .home-shop__nav{position: static;transform: none}
+    .home-shop{transform: none!important;}
+    .header--desktop{display: none;}
+    .header--mobile{display: flex;}
 
 }
 @media screen and (max-width: 425px){ 
-    :root{--step: 65px;}
+    :root{--step: 40px;}
     .parallax_component,.drinks-transition {grid-template-columns: repeat(4, 1fr);}
     .drinks__bg,.drinks-transition {background: repeating-linear-gradient(to right, var(--polosa-color) 0 1px, transparent 1px calc(100% / 4));}
     .drinks-transition__column:nth-child(5),.drinks-transition__column:nth-child(6),.parallax_image-col:nth-child(5),.parallax_image-col:nth-child(6){display: none;}
     .drinks-transition{height:300px;}
-    .about {margin-top:250px;padding-bottom:150px;}
+    .about {margin-top:150px;padding-bottom:100px;}
     .home-shop__item-count--block{display: none;}
     .home-shop__divider > div:nth-child(2) { order: 2; gap: 20px;}
 }

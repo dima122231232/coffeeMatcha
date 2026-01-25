@@ -5,16 +5,14 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 // вращение модели
 const ROT = { x: 0, y: -Math.PI / 2, z: -0.25 };
-const BREAKPOINT = 770;
 
-// 👇 добавили: целевой “размер” модели в сцене (универсально для любых glb)
-const TARGET_MODEL_SIZE = 1; // подстрой 0.8 / 1 / 1.2 если нужно
+// 👇 целевой “размер” модели в сцене (универсально для любых glb)
+const TARGET_MODEL_SIZE = 1.1; // подстрой 0.8 / 1 / 1.2 если нужно
 
 export default function Cup({
   modelUrl = "/images/cub-beta.glb",
   onLoaded,
   camLarge = { x: 0, y: 0, z: 8, fov: 45 },
-  camSmall = { x: 0, y: 0, z: 1.6, fov: 45 },
 }) {
   const canvasRef = useRef(null);
 
@@ -64,8 +62,7 @@ export default function Cup({
         }
       });
 
-      // ✅ минимальное изменение: нормализуем масштаб под один “стандарт”
-      // (старые модели тоже будут выглядеть стабильно — просто приведутся к одному размеру)
+      // нормализуем масштаб под один “стандарт”
       const box0 = new THREE.Box3().setFromObject(model);
       const size0 = box0.getSize(new THREE.Vector3());
       const maxDim = Math.max(size0.x, size0.y, size0.z);
@@ -93,26 +90,20 @@ export default function Cup({
       );
     });
 
-    // изменение размера
+    // изменение размера (только “десктопная” логика)
     const resize = () => {
       const w = canvas.clientWidth || window.innerWidth;
       const h = canvas.clientHeight || window.innerHeight;
       renderer.setSize(w, h, false);
-      const aspect = w / h;
 
-      if (window.innerWidth < BREAKPOINT) {
-        camera.position.set(camSmall.x, camSmall.y, camSmall.z);
-        camera.aspect = aspect;
-        camera.fov = camSmall.fov;
-        camera.updateProjectionMatrix();
-      } else {
-        camera.position.set(camLarge.x, camLarge.y, camLarge.z);
-        camera.aspect = aspect;
-        const baseFovRad = THREE.MathUtils.degToRad(camLarge.fov);
-        const newFovRad = 2 * Math.atan(Math.tan(baseFovRad / 2) * (h / w));
-        camera.fov = THREE.MathUtils.radToDeg(newFovRad);
-        camera.updateProjectionMatrix();
-      }
+      camera.position.set(camLarge.x, camLarge.y, camLarge.z);
+      camera.aspect = w / h;
+
+      const baseFovRad = THREE.MathUtils.degToRad(camLarge.fov);
+      const newFovRad = 2 * Math.atan(Math.tan(baseFovRad / 2) * (h / w));
+      camera.fov = THREE.MathUtils.radToDeg(newFovRad);
+
+      camera.updateProjectionMatrix();
     };
 
     window.addEventListener("resize", resize, { passive: true });
@@ -148,7 +139,7 @@ export default function Cup({
       renderer.dispose();
       scene.clear();
     };
-  }, [modelUrl, onLoaded, camLarge, camSmall]);
+  }, [modelUrl, onLoaded, camLarge]);
 
   return <canvas ref={canvasRef} className="cup-canvas" />;
 }

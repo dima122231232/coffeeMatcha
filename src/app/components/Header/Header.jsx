@@ -24,6 +24,7 @@ export default function Header() {
     useEffect(() => {splitTextToSpans(".StartAnimation");}, []);
 
   return (
+    <>
     <header className="header header--desktop">
       <div className="header__wrapper">
         <Logo className="header__logo logo" />
@@ -39,5 +40,15 @@ export default function Header() {
         </div>
       </div>
     </header>
+    <header className="header header--mobile">
+        <div className="header__wrapper">
+            <Logo className="header__logo logo" />
+            <button className="header__burger">
+                <div className="header__burger__polosa"/>
+                <div className="header__burger__polosa"/>
+            </button>
+        </div>
+    </header>
+    </>
   );
 }

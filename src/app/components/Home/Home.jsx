@@ -210,15 +210,15 @@ export default function Home() {
         gsap.fromTo(".drinks__specialty--text .word", { clipPath: "polygon(0 0%, 100% 0%, 100% 97%, 0% 97%)" }, { clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)", stagger: 0.05, ease: "none", scrollTrigger: { trigger: ".drinks", start: "25% top", end: "35% top", scrub: true } });
         gsap.fromTo(".drinks__hot-cold--text .word", { clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)" }, { clipPath: "polygon(0 100%, 100% 100%, 100% 0%, 0% 0%)", stagger: 0.05, ease: "none", scrollTrigger: { trigger: ".drinks", start: "35% top", end: "45% top", scrub: true } });
         gsap.to(".drinks-transition__column", { transform: "translateY(0)", ease: "none", scrollTrigger: { trigger: ".drinks", start: "100% bottom", end: "130% bottom", scrub: true } });
-        gsap.to(".about__title .word", { opacity: 1, ease: "none", stagger: 0.065, scrollTrigger: { trigger: ".about", start: "20% bottom", end: "bottom bottom", scrub: true } });
+        gsap.to(".about__title .word", { opacity: 1, ease: "none", stagger: 0.065, scrollTrigger: { trigger: ".about", start: "20% bottom", end: "200% bottom", scrub: true } });
 
         gsap.set(".home-shop", { force3D: true });
-        // gsap.fromTo(".home-shop", { yPercent: 0 }, { yPercent: -70, ease: "none", scrollTrigger: { trigger: ".home-shop", start: "top bottom", end: "bottom top", scrub: .8,invalidateOnRefresh: true} });
+        gsap.fromTo(".home-shop", { yPercent: 0 }, { yPercent: -15, ease: "none", scrollTrigger: { trigger: ".home-shop", start: "center bottom", end: "bottom top", scrub: 1,invalidateOnRefresh: true} });
         return () => ctx.revert();
     }, []);
 
     return (
-        <main>
+        <main className="main-home">
             <div className="vlock" />
 
             <section className="hero" aria-labelledby="start-page">

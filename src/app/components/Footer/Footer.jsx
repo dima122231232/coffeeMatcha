@@ -1,6 +1,27 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Logo from "../Logo";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Footer() {
-  return <>
+  const spacerRef = useRef(null);
+
+  useEffect(() => {
+    const el = spacerRef.current;
+    if (!el) return;
+
+    const ctx = gsap.context(() => {
+        gsap.fromTo(".footer-spacer", { yPercent: -100 }, { yPercent: 0, ease: "none", scrollTrigger: { trigger: ".footer-spacer", start: "bottom bottom", end: "200% bottom", scrub: 0}});
+    }, el);
+
+    return () => ctx.revert();
+  }, []);
+return ( 
+  <>
     <footer className="footer" role="contentinfo">
             <div className="footer__left">
                 <a href="/" aria-label="Java Matcha Coffee — home">
@@ -91,4 +112,5 @@ export default function Footer() {
     <div className="footer-spacer" aria-hidden="true" >COFFEE</div>
 
   </>
+);
 }

@@ -2,7 +2,7 @@
     .hero__tagline , .hero__divider{display: none;}
     .hero__button{
         position: absolute;
-        bottom: calc(var(--indents)*2.5);
+        bottom: calc(var(--indents)*3);
         left: var(--indents);
         font-weight:700;
     }

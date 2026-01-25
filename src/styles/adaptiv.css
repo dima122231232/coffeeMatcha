@@ -2,11 +2,11 @@
     .hero__tagline , .hero__divider{display: none;}
     .hero__button{
         position: absolute;
-        bottom: var(--indents);
+        bottom: calc(var(--indents)*2.5);
         left: var(--indents);
         font-weight:700;
     }
-    .hero__info{flex-direction: column;gap:25vh;}
+    .hero__info{flex-direction: column;gap:12vh;}
     .hero-indent{width:100%;}
     .hero__title{text-align: start; font-size:60px;}
     .hero__description{width: 280px;font-size: 24px;float: right;text-align: end;opacity:.5;}
@@ -55,7 +55,7 @@
     .home-shop__divider > div:nth-child(2) { order: 2; gap: 20px;}
 }
 @media screen and (max-width: 75rem){ 
-    .footer{font-size: .75rem;}
+    .footer{font-size: .75rem;border-bottom:1px solid #E7E8E6}
     .footer__right-wrapper{max-width:15rem;}
     .footer-spacer{display: none;}
 }

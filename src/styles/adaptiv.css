@@ -6,7 +6,7 @@
         left: var(--indents);
         font-weight:700;
     }
-    .hero__info{flex-direction: column;gap:12vh;}
+    .hero__info{flex-direction: column;gap:12vh;margin-top: -50px;}
     .hero-indent{width:100%;}
     .hero__title{text-align: start; font-size:60px;}
     .hero__description{width: 280px;font-size: 24px;float: right;text-align: end;opacity:.5;}

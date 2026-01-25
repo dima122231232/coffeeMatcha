@@ -7,8 +7,11 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 const ROT = { x: 0, y: -Math.PI / 2, z: -0.25 };
 const BREAKPOINT = 770;
 
+// 👇 добавили: целевой “размер” модели в сцене (универсально для любых glb)
+const TARGET_MODEL_SIZE = 1; // подстрой 0.8 / 1 / 1.2 если нужно
+
 export default function Cup({
-  modelUrl = "/images/cup.glb",
+  modelUrl = "/images/cub-beta.glb",
   onLoaded,
   camLarge = { x: 0, y: 0, z: 8, fov: 45 },
   camSmall = { x: 0, y: 0, z: 1.6, fov: 45 },
@@ -40,7 +43,7 @@ export default function Cup({
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
 
     // освещение
-    scene.add(new THREE.AmbientLight(0xffffff, 2.2));
+    scene.add(new THREE.AmbientLight(0xffffff, 1.2));
     const dir = new THREE.DirectionalLight(0xffffff, 1.6);
     dir.position.set(4, 6, 5);
     scene.add(dir);
@@ -50,6 +53,7 @@ export default function Cup({
     const loader = new GLTFLoader();
     loader.load(modelUrl, (gltf) => {
       model = gltf.scene;
+
       model.traverse((o) => {
         if (o.isMesh) {
           o.castShadow = false;
@@ -59,13 +63,29 @@ export default function Cup({
           }
         }
       });
+
+      // ✅ минимальное изменение: нормализуем масштаб под один “стандарт”
+      // (старые модели тоже будут выглядеть стабильно — просто приведутся к одному размеру)
+      const box0 = new THREE.Box3().setFromObject(model);
+      const size0 = box0.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size0.x, size0.y, size0.z);
+      if (maxDim > 0) {
+        const s = TARGET_MODEL_SIZE / maxDim;
+        model.scale.setScalar(s);
+      }
+
+      // rotation как было
       model.rotation.set(ROT.x, ROT.y, ROT.z);
+
+      // центрирование как было (лучше после scale)
       const box = new THREE.Box3().setFromObject(model);
       const center = box.getCenter(new THREE.Vector3());
       model.position.sub(center);
+
       scene.add(model);
       resize();
       renderer.render(scene, camera);
+
       requestAnimationFrame(() =>
         requestAnimationFrame(() => {
           if (onLoaded) onLoaded();
@@ -79,6 +99,7 @@ export default function Cup({
       const h = canvas.clientHeight || window.innerHeight;
       renderer.setSize(w, h, false);
       const aspect = w / h;
+
       if (window.innerWidth < BREAKPOINT) {
         camera.position.set(camSmall.x, camSmall.y, camSmall.z);
         camera.aspect = aspect;
@@ -112,6 +133,7 @@ export default function Cup({
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
+
       scene.traverse((o) => {
         if (o.isMesh) {
           if (o.geometry) o.geometry.dispose();
@@ -122,15 +144,11 @@ export default function Cup({
           }
         }
       });
+
       renderer.dispose();
       scene.clear();
     };
   }, [modelUrl, onLoaded, camLarge, camSmall]);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="cup-canvas"
-    />
-  );
+  return <canvas ref={canvasRef} className="cup-canvas" />;
 }

@@ -8,17 +8,9 @@ import Logo from "../Logo";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
-  const spacerRef = useRef(null);
 
   useEffect(() => {
-    const el = spacerRef.current;
-    if (!el) return;
-
-    const ctx = gsap.context(() => {
-        gsap.fromTo(".footer-spacer", { yPercent: -100 }, { yPercent: 0, ease: "none", scrollTrigger: { trigger: ".footer-spacer", start: "bottom bottom", end: "200% bottom", scrub: 0}});
-    }, el);
-
-    return () => ctx.revert();
+    gsap.fromTo(".footer-spacer", { yPercent: -100 }, { yPercent: 0, ease: "none", scrollTrigger: { trigger: ".footer-spacer", start: "bottom bottom", end: "200% bottom", scrub: 0}});
   }, []);
 return ( 
   <>

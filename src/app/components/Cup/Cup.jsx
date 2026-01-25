@@ -3,11 +3,8 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-// вращение модели
 const ROT = { x: 0, y: -Math.PI / 2, z: -0.25 };
-
-// 👇 целевой “размер” модели в сцене (универсально для любых glb)
-const TARGET_MODEL_SIZE = 1.1; // подстрой 0.8 / 1 / 1.2 если нужно
+const TARGET_MODEL_SIZE = 1.1;
 
 export default function Cup({
   modelUrl = "/images/cub-beta.glb",
@@ -20,14 +17,11 @@ export default function Cup({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // сцена
     const scene = new THREE.Scene();
 
-    // камера
     const camera = new THREE.PerspectiveCamera(camLarge.fov, 1, 0.1, 100);
     camera.position.set(camLarge.x, camLarge.y, camLarge.z);
 
-    // рендерер
     const renderer = new THREE.WebGLRenderer({
       canvas,
       alpha: true,
@@ -40,13 +34,11 @@ export default function Cup({
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
 
-    // освещение
     scene.add(new THREE.AmbientLight(0xffffff, 1.2));
     const dir = new THREE.DirectionalLight(0xffffff, 1.6);
     dir.position.set(4, 6, 5);
     scene.add(dir);
 
-    // загрузка модели
     let model;
     const loader = new GLTFLoader();
     loader.load(modelUrl, (gltf) => {
@@ -62,7 +54,6 @@ export default function Cup({
         }
       });
 
-      // нормализуем масштаб под один “стандарт”
       const box0 = new THREE.Box3().setFromObject(model);
       const size0 = box0.getSize(new THREE.Vector3());
       const maxDim = Math.max(size0.x, size0.y, size0.z);
@@ -71,10 +62,8 @@ export default function Cup({
         model.scale.setScalar(s);
       }
 
-      // rotation как было
       model.rotation.set(ROT.x, ROT.y, ROT.z);
 
-      // центрирование как было (лучше после scale)
       const box = new THREE.Box3().setFromObject(model);
       const center = box.getCenter(new THREE.Vector3());
       model.position.sub(center);
@@ -90,7 +79,6 @@ export default function Cup({
       );
     });
 
-    // изменение размера (только “десктопная” логика)
     const resize = () => {
       const w = canvas.clientWidth || window.innerWidth;
       const h = canvas.clientHeight || window.innerHeight;
@@ -109,7 +97,6 @@ export default function Cup({
     window.addEventListener("resize", resize, { passive: true });
     resize();
 
-    // анимационный цикл
     let raf;
     const loop = () => {
       if (model) {
@@ -120,7 +107,6 @@ export default function Cup({
     };
     loop();
 
-    // очистка
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);

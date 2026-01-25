@@ -17,7 +17,6 @@ export default function RootLayout({ children }) {
           {children}
         </SmoothScrolling>
         <Footer/>
-        <div className="footer-spacer" aria-hidden="true" />
       </body>
     </html>
   );

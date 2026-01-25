@@ -82,7 +82,7 @@ export default function Home() {
         gsap.set(spans, { "--p": "0%" });
         gsap.to(spans, { "--p": "110%", duration: 0.4, delay: 0.3, ease, stagger: 0.015, overwrite: true });
         gsap.to(".cup-canvas", { duration: 0.5, delay: 0.2, transform: "translate(-50%, -50%) scale(1)", ease });
-        gsap.to(".vlock", { duration: 0.3, scale: 0 });
+        gsap.to(".vlock", { duration: .5, scale: 0,ease:ease});
     }, []);
 
     const products = [
@@ -223,7 +223,7 @@ export default function Home() {
 
             <section className="hero" aria-labelledby="start-page">
                 <div className="hero__content">
-                    {/* <Cup modelUrl="/images/cup.glb" onLoaded={play} /> */}
+                    <Cup modelUrl="/images/cup.glb" onLoaded={play} />
                     <div className="hero__info">
                         <div className="hero__title hero-indent StartAnimation">
                             premium <br />

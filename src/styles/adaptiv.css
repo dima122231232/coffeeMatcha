@@ -34,7 +34,7 @@
     }
     .home-shop__content{max-width: 90vw}
     .home-shop__title{max-width:50vw;}
-    .about{margin-top: 50vh;}
+    .about{margin-top: 40vh;padding-bottom:200px;}
     .item-count--num{padding:4px 8px}
     .home-shop__nav-btn:hover{transform: none}
     .drinks-transition{height: 50vh;}
@@ -47,9 +47,22 @@
     .drinks__bg,.drinks-transition {background: repeating-linear-gradient(to right, var(--polosa-color) 0 1px, transparent 1px calc(100% / 4));}
     .drinks-transition__column:nth-child(5),.drinks-transition__column:nth-child(6),.parallax_image-col:nth-child(5),.parallax_image-col:nth-child(6){display: none;}
     .drinks-transition{height:300px;}
-    .about {margin-top:300px;padding-bottom:300px;height: auto;}
+    .about {margin-top:250px;padding-bottom:150px;}
     .home-shop__item-count--block{display: none;}
     .home-shop__divider > div:nth-child(2) { order: 2; gap: 20px;}
+}
+@media screen and (max-width: 75rem){ 
+    .footer{font-size: .75rem;}
+    .footer__right-wrapper{max-width:15rem;}
+}
+@media screen and (max-width: 48rem){ 
+    .footer{font-size: .625rem;flex-direction: column;padding: 4vh var(--indents);}
+    .footer > div:nth-child(1) { order: 1;}
+    .footer__right-wrapper{max-width:15rem;}
+    .footer__left > :nth-child(1){ order: 1;}
+    .footer__right{margin:0;padding-bottom: 4vh;border-bottom:1px solid #E7E8E6}
+    .footer__left{width: auto;display: grid;grid-template-columns: repeat(2, 1fr);grid-template-rows: repeat(2, 1fr);gap:20px;padding-top:4vh;}
+    .footer-spacer{padding-top:4vh;}
 }
 @media screen and (min-width: 768px) and (max-width: 1440px) {
     .hero__title{font-size:clamp(32px, 3.6vw, 52px);}

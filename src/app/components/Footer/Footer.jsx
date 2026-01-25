@@ -1,6 +1,6 @@
 import Logo from "../Logo";
 export default function Footer() {
-  return (
+  return <>
     <footer className="footer" role="contentinfo">
             <div className="footer__left">
                 <a href="/" aria-label="Java Matcha Coffee — home">
@@ -88,6 +88,7 @@ export default function Footer() {
                 </div>
             </div>
     </footer>
+    <div className="footer-spacer" aria-hidden="true" >COFFEE</div>
 
-  );
+  </>
 }

@@ -12,13 +12,13 @@ export function pageReady(){if(typeof window!=="undefined")window.__pageReady?.(
 export function holdPage(){if(typeof window!=="undefined")window.__holdPage?.();}
 
 export default function LoaderGate(){
-    const pathname=usePathname(),win=useRef(false),page=useRef(false),hold=useRef(false),unlocked=useRef(false);
+    const pathname=usePathname(),win=useRef(false),page=useRef(true),hold=useRef(false),unlocked=useRef(false);
 
     const unlock=()=>{if(unlocked.current||!win.current||!page.current)return;unlocked.current=true;gsap.to(".vlock",{duration:.5,scale:0,ease});};
 
     useEffect(()=>{
         gsap.set(".vlock",{scale:1,transformOrigin:"50% 50%"});
-        window.__holdPage=()=>{hold.current=true;};
+        window.__holdPage=()=>{hold.current=true;page.current=false;};
         window.__pageReady=()=>{page.current=true;unlock();};
         const onLoad=()=>{win.current=true;unlock();};
         if(document.readyState==="complete")onLoad();else window.addEventListener("load",onLoad);
@@ -26,9 +26,9 @@ export default function LoaderGate(){
     },[]);
 
     useEffect(()=>{
-        page.current=false;hold.current=false;unlocked.current=false;
+        hold.current=false;unlocked.current=false;page.current=true;
         gsap.set(".vlock",{scale:1});
-        requestAnimationFrame(()=>{if(!hold.current){page.current=true;unlock();}});
+        requestAnimationFrame(()=>{if(!hold.current)unlock();});
     },[pathname]);
 
     return null;

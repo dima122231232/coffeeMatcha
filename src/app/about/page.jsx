@@ -1,5 +1,6 @@
 "use client";
 
+
 import "./page.css";
 import { useEffect } from "react";
 import { splitTextToSpans } from "@/app/components/Algoritms/splitTextToSpans";

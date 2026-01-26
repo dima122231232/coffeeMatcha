@@ -1,54 +1,23 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname,useRouter } from "next/navigation";
-import { useRef,useEffect } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import { CustomEase } from "gsap/CustomEase";
+import { GateLink } from "../LoaderGate";
 import Logo from "../Logo";
 
 gsap.registerPlugin(CustomEase);
 const ease=CustomEase.create("menu","M0,0 C.7,0 .3,1 1,1");
 
 export default function Header(){
-    const router=useRouter(),pathname=usePathname(),helper=useRef(),burger=useRef(),burgerM=useRef(),lineA=useRef(),lineB=useRef(),lineAm=useRef(),lineBm=useRef(),navBurger=useRef(),navBurgerM=useRef(),open=useRef(false),busy=useRef(false);
-    const is=(href)=>(pathname===href?"page":undefined);
+    const helper=useRef(),burger=useRef(),burgerM=useRef(),lineA=useRef(),lineB=useRef(),lineAm=useRef(),lineBm=useRef(),navBurger=useRef(),navBurgerM=useRef(),open=useRef(false);
 
-    const go=async(e,href)=>{
-        if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button===1)return;
-        if(typeof href!=="string"||href.startsWith("http")||href.startsWith("mailto:")||href.startsWith("tel:"))return;
-        if(href===pathname)return;
-        e.preventDefault();
-        if(busy.current)return;
-        busy.current=true;
-        await gsap.to(".vlock",{duration:.5,scale:1,ease});
-        router.push(href);
-    };
-
-    useEffect(()=>{busy.current=false;},[pathname]);
-
-    const toggle=()=>{
-        const o=open.current;
-        gsap.to([lineA.current,lineB.current],{duration:.25,rotate:(i)=>(o?0:i?45:-45),transform:(i)=>(o?"translateY(0%)":i?"translateY(-50%)":"translateY(50%)"),ease});
-        gsap.to(burger.current,{duration:.25,gap:o?5:0,ease});
-        burger.current?.classList.toggle("is-open",!o);
-        gsap.to(helper.current,{duration:.35,height:o?40:320,width:o?40:580,borderRadius:o?0:12,autoRound:false,ease});
-        gsap.to(navBurger.current,{duration:o?.25:.5,display:o?"none":"flex",opacity:o?0:1,scale:o?.95:1,ease});
-        open.current=!o;
-    };
-
-    const toggleM=()=>{
-        const o=open.current;
-        gsap.to(".header__logo",{duration:.15,opacity:o?1:0});
-        gsap.to(burgerM.current,{duration:.25,gap:o?5:0,ease});
-        gsap.to([lineAm.current,lineBm.current],{duration:.25,rotate:(i)=>(o?0:i?45:-45),transform:(i)=>(o?"translateY(0%)":i?"translateY(-50%)":"translateY(50%)"),ease});
-        gsap.to(navBurgerM.current,{duration:.35,display:o?"none":"flex",opacity:o?0:1,height:o?60:270,scale:o?.95:1,borderRadius:o?0:12,ease:"back.inOut"});
-        open.current=!o;
-    };
+    const toggle=()=>{const o=open.current;gsap.to([lineA.current,lineB.current],{duration:.25,rotate:i=>o?0:i?45:-45,transform:i=>o?"translateY(0%)":i?"translateY(-50%)":"translateY(50%)",ease});gsap.to(burger.current,{duration:.25,gap:o?5:0,ease});burger.current?.classList.toggle("is-open",!o);gsap.to(helper.current,{duration:.35,height:o?40:320,width:o?40:580,borderRadius:o?0:12,autoRound:false,ease});gsap.to(navBurger.current,{duration:o?.25:.5,display:o?"none":"flex",opacity:o?0:1,scale:o?.95:1,ease});open.current=!o;};
+    const toggleM=()=>{const o=open.current;gsap.to(".header__logo",{duration:.15,opacity:o?1:0});gsap.to(burgerM.current,{duration:.25,gap:o?5:0,ease});gsap.to([lineAm.current,lineBm.current],{duration:.25,rotate:i=>o?0:i?45:-45,transform:i=>o?"translateY(0%)":i?"translateY(-50%)":"translateY(50%)",ease});gsap.to(navBurgerM.current,{duration:.35,display:o?"none":"flex",opacity:o?0:1,height:o?60:270,scale:o?.95:1,borderRadius:o?0:12,ease:"back.inOut"});open.current=!o;};
 
     return(
         <>
-            <header className="header  header--desktop">
+            <header className="header header--desktop">
                 <div className="header__wrapper">
                     <Logo className="header__logo logo" />
                     <div className="header__actions">
@@ -59,14 +28,13 @@ export default function Header(){
                         </button>
                         <div className="header__burger--desktop-helper" ref={helper} />
                     </div>
-
                     <nav className="header-nav" aria-label="Primary navigation" ref={navBurger}>
                         <ul className="header-nav__list">
-                            <li className="header-nav__item"><Link className="header-nav__link" href="/" onClick={(e)=>go(e,"/")} aria-current={is("/")}><span>Home Page</span><div className="header-nav__marker" aria-hidden="true"></div></Link></li>
-                            <li className="header-nav__item"><Link className="header-nav__link" href="/about" onClick={(e)=>go(e,"/about")} aria-current={is("/about")}><span>About Us</span><div className="header-nav__marker" aria-hidden="true"></div></Link></li>
-                            <li className="header-nav__item"><Link className="header-nav__link" href="/location" onClick={(e)=>go(e,"/location")} aria-current={is("/location")}><span>Location</span><div className="header-nav__marker" aria-hidden="true"></div></Link></li>
-                            <li className="header-nav__item"><Link className="header-nav__link" href="/careers" onClick={(e)=>go(e,"/careers")} aria-current={is("/careers")}><span>Careers</span><div className="header-nav__marker" aria-hidden="true"></div></Link></li>
-                            <li className="header-nav__item"><Link className="header-nav__link" href="/product" onClick={(e)=>go(e,"/product")} aria-current={is("/product")}><span>Product</span><div className="header-nav__marker" aria-hidden="true"></div></Link></li>
+                            <li className="header-nav__item"><GateLink className="header-nav__link" href="/"><span>Home Page</span><div className="header-nav__marker" /></GateLink></li>
+                            <li className="header-nav__item"><GateLink className="header-nav__link" href="/about"><span>About Us</span><div className="header-nav__marker" /></GateLink></li>
+                            <li className="header-nav__item"><GateLink className="header-nav__link" href="/location"><span>Location</span><div className="header-nav__marker" /></GateLink></li>
+                            <li className="header-nav__item"><GateLink className="header-nav__link" href="/careers"><span>Careers</span><div className="header-nav__marker" /></GateLink></li>
+                            <li className="header-nav__item"><GateLink className="header-nav__link" href="/product"><span>Product</span><div className="header-nav__marker" /></GateLink></li>
                         </ul>
                     </nav>
                 </div>
@@ -75,16 +43,16 @@ export default function Header(){
             <header className="header header--mobile">
                 <div className="header__wrapper">
                     <Logo className="header__logo logo" />
-                    <button className="header__burger" ref={burgerM} onClick={toggleM}><div className="header__burger__polosa" ref={lineAm} /><div className="header__burger__polosa" ref={lineBm}/></button>
-                        <nav className="header-nav" aria-label="Primary navigation" ref={navBurgerM}>
-                            <ul className="header-nav__list">
-                                <li className="header-nav__item"><Link className="header-nav__link" href="/" onClick={(e)=>go(e,"/")} aria-current={is("/")}><span>Home Page</span><div className="header-nav__marker" aria-hidden="true"></div></Link></li>
-                                <li className="header-nav__item"><Link className="header-nav__link" href="/about" onClick={(e)=>go(e,"/about")} aria-current={is("/about")}><span>About Us</span><div className="header-nav__marker" aria-hidden="true"></div></Link></li>
-                                <li className="header-nav__item"><Link className="header-nav__link" href="/location" onClick={(e)=>go(e,"/location")} aria-current={is("/location")}><span>Location</span><div className="header-nav__marker" aria-hidden="true"></div></Link></li>
-                                <li className="header-nav__item"><Link className="header-nav__link" href="/careers" onClick={(e)=>go(e,"/careers")} aria-current={is("/careers")}><span>Careers</span><div className="header-nav__marker" aria-hidden="true"></div></Link></li>
-                                <li className="header-nav__item"><Link className="header-nav__link" href="/product" onClick={(e)=>go(e,"/product")} aria-current={is("/product")}><span>Product</span><div className="header-nav__marker" aria-hidden="true"></div></Link></li>
-                            </ul>
-                        </nav>
+                    <button className="header__burger" ref={burgerM} onClick={toggleM}><div className="header__burger__polosa" ref={lineAm} /><div className="header__burger__polosa" ref={lineBm} /></button>
+                    <nav className="header-nav" aria-label="Primary navigation" ref={navBurgerM}>
+                        <ul className="header-nav__list">
+                            <li className="header-nav__item"><GateLink className="header-nav__link" href="/"><span>Home Page</span><div className="header-nav__marker" /></GateLink></li>
+                            <li className="header-nav__item"><GateLink className="header-nav__link" href="/about"><span>About Us</span><div className="header-nav__marker" /></GateLink></li>
+                            <li className="header-nav__item"><GateLink className="header-nav__link" href="/location"><span>Location</span><div className="header-nav__marker" /></GateLink></li>
+                            <li className="header-nav__item"><GateLink className="header-nav__link" href="/careers"><span>Careers</span><div className="header-nav__marker" /></GateLink></li>
+                            <li className="header-nav__item"><GateLink className="header-nav__link" href="/product"><span>Product</span><div className="header-nav__marker" /></GateLink></li>
+                        </ul>
+                    </nav>
                 </div>
             </header>
         </>

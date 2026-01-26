@@ -8,6 +8,7 @@ import Cup from "@/app/components/Cup/Cup";
 import HeroButton from "@/app/components/Buttons/HeroButton";
 import { splitTextToSpans } from "@/app/components/Algoritms/splitTextToSpans";
 import Button_wth_ind from "../Buttons/Button_without_indents";
+import { holdPage,pageReady } from "@/app/components/LoaderGate";
 
 gsap.registerPlugin(CustomEase, ScrollTrigger);
 
@@ -71,7 +72,8 @@ export default function Home() {
     const imagesItemRef1 = useRef(null),imagesItemRef2 = useRef(null), imagesItemRef3 = useRef(null);
     const contentRef1 = useRef(null), contentRef2 = useRef(null), contentRef3 = useRef(null);
     const countRef = useRef(null), isSliding = useRef(false), trf = useRef(0);
-
+    
+    holdPage();
     const play = useCallback(() => {
         if (ready.current) return;
 
@@ -82,7 +84,7 @@ export default function Home() {
         gsap.set(spans, { "--p": "0%" });
         gsap.to(spans, { "--p": "110%", duration: 0.4, delay: 0.3, ease, stagger: 0.015, overwrite: true });
         gsap.to(".cup-canvas", { duration: 0.5, delay: 0.2, transform: "translate(-50%, -50%) scale(1)", ease });
-        gsap.to(".vlock", { duration: .5, scale: 0,ease:ease});
+        pageReady();
     }, []);
 
     const products = [
@@ -219,7 +221,6 @@ export default function Home() {
 
     return (
         <main className="main-home">
-            <div className="vlock" />
 
             <section className="hero" aria-labelledby="start-page">
                 <div className="hero__content">

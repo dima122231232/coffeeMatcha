@@ -44,8 +44,9 @@ export default function LocationPage(){
                     <ul className="locations__address-list" ref={list} data-lenis-prevent onMouseLeave={reset}>
                         {LOC.map((x,i)=>(
                             <li key={i} className={`locations__address-item city--${x.city}`}
-                                onMouseEnter={()=>focus(i)}
-                                onClick={()=>window.location.href=x.href}>
+                                onMouseEnter={()=>{if(window.innerWidth>768)focus(i);}}
+                                onTouchStart={()=>{focus(i);window.location.href=x.href;}}
+                                onClick={()=>{if(window.innerWidth>768)window.location.href=x.href;}}>
                                 {x.text}
                             </li>
                         ))}

@@ -32,6 +32,8 @@
   background: #F3C054;
   color: #345D31;
 }
+*{-webkit-tap-highlight-color:transparent;}@media(hover:none){button,a,li{-webkit-appearance:none;appearance:none;background:none;}button:active,a:active,li:active{background-color:transparent;}*:focus,*:focus-visible{outline:none;}}
+
 body {
   font-family: var(--NB-International-Pro);
   font-weight: 500;

@@ -181,9 +181,9 @@
 
 @media screen and (max-width: 768px) {
     .locations__address-item{padding-right:35%;}
-    /* .locations__map{pointer-events: none;} */
+    .locations__map{pointer-events: none;}
     .map{opacity: .8;}
-    .locations__panel{width: 100%;margin-top:20vh;}
+    .locations__panel{width: 100%;margin-top:25vh;}
     .locations__map {
         align-items: center;
         max-width: 100%;
@@ -196,5 +196,5 @@
     .locations{height: auto;}
     .locations__wrapper{flex-direction: column;}
     .map-marker{height:5px;width:5px;}
-    .city{display: none;}
+    /* .city{display: none;} */
 }

@@ -14,7 +14,7 @@
 }
 
 .about-page__title {
-    font-size:clamp(3.75rem, calc((1vw + 1vh) * 3.2), 6rem);
+    font-size:clamp(2.75rem, calc((1vw + 1vh) * 3.2), 6rem);
     text-transform: capitalize;
     line-height:90%;
     font-weight:500;

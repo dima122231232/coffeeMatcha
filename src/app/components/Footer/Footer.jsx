@@ -27,7 +27,7 @@ export default function Footer(){
                         <li className="footer__item"><GateLink className="footer__link" href="/">Home Page</GateLink></li>
                         <li className="footer__item"><GateLink className="footer__link" href="/about">About Us</GateLink></li>
                         <li className="footer__item"><GateLink className="footer__link" href="/products">Products</GateLink></li>
-                        <li className="footer__item"><GateLink className="footer__link" href="/location">Location</GateLink></li>
+                        <li className="footer__item"><GateLink className="footer__link" href="/Locations">Locations</GateLink></li>
                     </ul></nav>
                     <nav className="footer__nav" aria-label="Social links"><ul className="footer__list footer__list--social"><li className="footer__item"><a className="footer__link" href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a></li><li className="footer__item"><a className="footer__link" href="https://tiktok.com/" target="_blank" rel="noopener noreferrer">Tik Tok</a></li><li className="footer__item"><a className="footer__link" href="https://x.com/" target="_blank" rel="noopener noreferrer">X</a></li></ul></nav>
                     <nav className="footer__nav" aria-label="Legal"><ul className="footer__list footer__list--legal">

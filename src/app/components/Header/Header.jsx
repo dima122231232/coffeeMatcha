@@ -32,7 +32,7 @@ export default function Header(){
                         <ul className="header-nav__list">
                             <li className="header-nav__item"><GateLink className="header-nav__link" href="/"><span>Home Page</span><div className="header-nav__marker" /></GateLink></li>
                             <li className="header-nav__item"><GateLink className="header-nav__link" href="/about"><span>About Us</span><div className="header-nav__marker" /></GateLink></li>
-                            <li className="header-nav__item"><GateLink className="header-nav__link" href="/location"><span>Location</span><div className="header-nav__marker" /></GateLink></li>
+                            <li className="header-nav__item"><GateLink className="header-nav__link" href="/Locations"><span>Location</span><div className="header-nav__marker" /></GateLink></li>
                             <li className="header-nav__item"><GateLink className="header-nav__link" href="/careers"><span>Careers</span><div className="header-nav__marker" /></GateLink></li>
                             <li className="header-nav__item"><GateLink className="header-nav__link" href="/product"><span>Product</span><div className="header-nav__marker" /></GateLink></li>
                         </ul>

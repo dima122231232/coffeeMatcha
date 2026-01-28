@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { splitTextToSpans } from "@/app/components/Algoritms/splitTextToSpans";
 import { CustomEase } from "gsap/CustomEase";
 import { gsap } from "gsap";
-import { GateLink } from "../components/LoaderGate";
+import { GateLink } from "../LoaderGate";
 gsap.registerPlugin(CustomEase);
 const ease = CustomEase.create("menu", "M0,0 C.7,0 .3,1 1,1");
 

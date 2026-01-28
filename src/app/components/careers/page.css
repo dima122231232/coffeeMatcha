@@ -1,9 +1,9 @@
 .careers{height: 100vh;background-color: var(--main-color);display: flex;justify-content: space-between;align-items: center;padding:0 var(--indents);}
 .careers__image{width:40%}
 .careers__content{width: 60%;color: var(--black-main-color);}
-.careers__title{font-size:clamp(2.5rem, 1.1rem + 4.2vw, 6rem); line-height:90%;font-weight:500;letter-spacing:-.3rem;}
+.careers__title{font-size:clamp(2.5rem, 1.1rem + 4.2vw, 6rem); line-height:90%;font-weight:500;letter-spacing:-.1rem;}
 .careers__text{font-size: var(--font-small_title-size); width: calc((1vh + 1vw)*20);padding:2vh 0 4vh;}
-.careers__cta{font-size:var(--font-small_title-size);font-weight:500;display: flex;align-items: center;font-family: var(--Inter);}
+.careers__cta{font-size:var(--font-small_title-size);font-weight:500;display: flex;align-items: center;font-family: var(--Inter);color: var(--black-main-color);}
 .notify__button{display: flex; align-items: center;}
 .careers__cta path{fill: var(--black-main-color);}
 @media screen and (max-width: 768px) {

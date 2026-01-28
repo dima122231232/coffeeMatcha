@@ -1,7 +1,7 @@
 "use client";
 
 import "./page.css"
-import Button_wth_ind from "../components/Buttons/Button_without_indents";
+import Button_wth_ind from "../Buttons/Button_without_indents";
 import { useEffect} from "react";
 import { gsap } from "gsap";
 import { splitTextToSpans } from "@/app/components/Algoritms/splitTextToSpans";

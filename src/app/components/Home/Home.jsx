@@ -294,7 +294,7 @@ export default function Home() {
                     <p className="about__label">ABOUT US</p>
                     <h6 className="about__title">We are a modern café focused on quality, simplicity, and intention. We work with carefully sourced matcha and specialty coffee, paying attention to origin, process, and balance. Every detail — from ingredients to atmosphere — is designed to create a calm, thoughtful experience.</h6>
                     <p className="about__text">In August 2020, we launched our first location, a 5x10 coffee cart nestled in the garden of the Wythe diner in Brooklyn. Our operation was simple and our footprint was small, which let us remove costs that didn’t benefit our customers or baristas. This allowed us to source top of the range specialty coffees from around the world, serve clean and fresh food sourced locally, and pay our baristas above market wages.</p>
-                    <Button_wth_ind className="about__button">View all information about us</Button_wth_ind>
+                    <GateLink href="/about" ><Button_wth_ind className="about__button">View all information about us</Button_wth_ind></GateLink>
                 </div>
             </section>
 

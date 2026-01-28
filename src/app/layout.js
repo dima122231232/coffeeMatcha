@@ -16,13 +16,14 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
         <body >
-            <LoaderGate/>
-            <Header/>
+            <LoaderGate>
+                <Header/>
                 <SmoothScrolling>
-                {children}
+                    {children}
                 </SmoothScrolling>
-            <Footer/>
-            <div className="vlock" />
+                <Footer/>
+                <div className="vlock" />
+            </LoaderGate>
         </body>
         </html>
     );

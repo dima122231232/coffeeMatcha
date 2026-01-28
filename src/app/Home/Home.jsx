@@ -73,7 +73,9 @@ export default function Home() {
     const contentRef1 = useRef(null), contentRef2 = useRef(null), contentRef3 = useRef(null);
     const countRef = useRef(null), isSliding = useRef(false), trf = useRef(0);
     
-    holdPage();
+    useEffect(() => {
+        holdPage();
+    }, []);
     const play = useCallback(() => {
         if (ready.current) return;
 

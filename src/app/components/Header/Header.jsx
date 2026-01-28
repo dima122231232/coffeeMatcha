@@ -33,7 +33,7 @@ export default function Header(){
                 <div className="header__wrapper">
                     <GateLink href="/" onClick={close}><Logo className="header__logo logo" /></GateLink>
                     <div className="header__actions">
-                        <button className="header__button">buy now</button>
+                        <GateLink href="/product" onClick={close}><button className="header__button">buy now</button></GateLink>
                         <button className="header__burger header__burger--desktop" ref={burger} onClick={toggle}>
                             <div className="header__burger__polosa" ref={lineA} />
                             <div className="header__burger__polosa" ref={lineB} />
@@ -54,7 +54,7 @@ export default function Header(){
 
             <header className="header header--mobile">
                 <div className="header__wrapper">
-                    <Logo className="header__logo logo" />
+                    <GateLink href="/" onClick={close}><Logo className="header__logo logo" /></GateLink>
                     <button className="header__burger" ref={burgerM} onClick={toggleM}><div className="header__burger__polosa" ref={lineAm} /><div className="header__burger__polosa" ref={lineBm} /></button>
                     <nav className="header-nav" aria-label="Primary navigation" ref={navBurgerM}>
                         <ul className="header-nav__list">

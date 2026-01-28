@@ -14,7 +14,7 @@ export default function CareersPage() {
     useEffect(() => { 
         [".StartAnimation"].forEach((s) => splitTextToSpans(s, { className: "word" }));
         gsap.set(".StartAnimation .word", { "--p": "0%" });
-        gsap.to(".StartAnimation .word", { "--p": "110%", duration: 0.8, delay: 0.2, ease, stagger: 0.005, overwrite: true });
+        gsap.to(".StartAnimation .word", { "--p": "110%", duration: 1, delay: 0.2, ease, stagger: 0.005, overwrite: true });
     }, []);   
   return (
     <main className="careers">

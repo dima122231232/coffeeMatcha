@@ -7,7 +7,7 @@ import { CustomEase } from "gsap/CustomEase";
 import Cup from "@/app/components/Cup/Cup";
 import HeroButton from "@/app/components/Buttons/HeroButton";
 import { splitTextToSpans } from "@/app/components/Algoritms/splitTextToSpans";
-import Button_wth_ind from "../Buttons/Button_without_indents";
+import Button_wth_ind from "../components/Buttons/Button_without_indents";
 import { GateLink, holdPage,pageReady } from "@/app/components/LoaderGate";
 
 gsap.registerPlugin(CustomEase, ScrollTrigger);

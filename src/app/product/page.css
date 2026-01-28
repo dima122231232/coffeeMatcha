@@ -55,5 +55,5 @@ body[data-path="/product"] .footer{background-color: var(--market-main-color);pa
     .products__catalog{grid-template-columns:repeat(1,1fr);}
     .product-card__title , .product-card__description{max-width:50vw;}
     .product-card__cta{margin-top:4vh;}
-    .products__hero-title{width:80%;position: absolute;}
+    .products__hero-title{width:90%;position: absolute;bottom:calc(var(--indents) * 2)}
 }

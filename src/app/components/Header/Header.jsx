@@ -31,7 +31,7 @@ export default function Header(){
         <>
             <header className="header header--desktop">
                 <div className="header__wrapper">
-                    <Logo className="header__logo logo" />
+                    <GateLink href="/" onClick={close}><Logo className="header__logo logo" /></GateLink>
                     <div className="header__actions">
                         <button className="header__button">buy now</button>
                         <button className="header__burger header__burger--desktop" ref={burger} onClick={toggle}>

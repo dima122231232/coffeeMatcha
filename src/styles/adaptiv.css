@@ -42,6 +42,7 @@
     .home-shop{transform: none!important;}
     .header--desktop{display: none;}
     .header--mobile{display: flex;}
+    .bt-style svg{padding:3px;}
 
 }
 @media screen and (max-width: 425px){ 

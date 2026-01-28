@@ -33,6 +33,7 @@
 .locations__map-inner{
     position:absolute;
     inset:0;
+    cursor:cell;
 }
 
 .map-zoom{

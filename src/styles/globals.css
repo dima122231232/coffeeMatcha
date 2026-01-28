@@ -4,6 +4,7 @@
     --font-small_title-size:clamp(0.875rem, 0.6rem + 1.5vw, 1.375rem);
     --font-large_text-size:clamp(22px, 2.2vw, 42px);
     --font-big_text-size:clamp(2rem, 1rem + 6vw, 4.8rem);
+    --font-price-tag-size: clamp(1rem, 0.85rem + 0.6vw, 1.25rem);
 
     --cup-size:100;
     --height--map-item:80px;
@@ -16,6 +17,11 @@
     --black-main-color:#191919;
     --polosa-color:#707170;
     --marks-color:#FDC80D;
+    --market-main-color:#F4F3E8;
+    --market-text-color:#522C25;
+    --market-polosa-color:#E0DAD5;
+    --market-bk-1:#F6EDE3;
+    --market-bk-2:#FFD29F;
 
     --indents:clamp(16px, 2.08vw, 40px);
     --step: 25vh;
@@ -79,11 +85,10 @@ html {
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     z-index: 100;
 }
 .header--desktop{
-    height:100px;
+    padding:20px 0 10px;
 }
 .header--desktop .header__wrapper{
     display: flex;
@@ -93,8 +98,14 @@ html {
     position: relative;
 }
 .header--desktop .header__logo{
-    width: clamp(65px, 5.2vw, 100px);
+    width: clamp(65px, 4.8vw, 100px);
+    background-color: var(--main-color);
+    padding:10px 15px;
+    border-radius:2px;
+    transform: translateY(-15%);
 }
+.logo{cursor: pointer}
+.logo path , .logo{transition: .2s;}
 .header--desktop .header__actions{
     display: flex;
     align-items: center;
@@ -131,9 +142,14 @@ html {
     border: none;
     will-change:transform;
     transition: .5s;
+    cursor: pointer;
 }
 .is-open{
   transform: translate(calc(var(--indents) * -0.5), calc(var(--indents) * 0.5));
+  background-color: var(--black-main-color)!important;
+}
+.is-open .header__burger__polosa{
+    background-color: var(--white)!important;
 }
 .header__burger--desktop .header__burger__polosa{
     width: 20px;
@@ -189,7 +205,7 @@ html {
 .header-nav__link span { opacity: .2; transition: .2s;}
 .header-nav__link[aria-current="page"] span { opacity: 1; }
 .header-nav__link[aria-current="page"] .header-nav__marker { opacity: 1; }
-
+.header--desktop{background-color: rgba(217, 217, 217, .065);backdrop-filter: blur(32px);}
 
 
 
@@ -252,6 +268,10 @@ html {
 }
 .header--mobile .header-nav__link{
     line-height:160%;
+}
+.header--desktop .logo:hover path ,.header--desktop .logo:hover {
+  fill: var(--market-main-color) !important;
+  background-color: var(--black-main-color);
 }
 /*HERO--------------------------------------*/
 .cup-canvas{
@@ -520,6 +540,7 @@ canvas {
     text-align: start;
     cursor: pointer;  
     transition: .2s; 
+    
 }
 .bt-style:hover{
     transform: scale(.95);

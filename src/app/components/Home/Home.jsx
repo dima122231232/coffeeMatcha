@@ -8,7 +8,7 @@ import Cup from "@/app/components/Cup/Cup";
 import HeroButton from "@/app/components/Buttons/HeroButton";
 import { splitTextToSpans } from "@/app/components/Algoritms/splitTextToSpans";
 import Button_wth_ind from "../Buttons/Button_without_indents";
-import { holdPage,pageReady } from "@/app/components/LoaderGate";
+import { GateLink, holdPage,pageReady } from "@/app/components/LoaderGate";
 
 gsap.registerPlugin(CustomEase, ScrollTrigger);
 
@@ -233,7 +233,7 @@ export default function Home() {
                         <div className="hero__divider" />
                         <div className="hero__text-block hero-indent">
                             <p className="hero__description StartAnimation">Loved by thousands of community members, this creation contains real green tea powder</p>
-                            <HeroButton />
+                            <GateLink href="/product" onClick={close}><HeroButton /></GateLink>
                         </div>
                     </div>
                     <h4 className="hero__tagline StartAnimation">you deserve this</h4>
@@ -375,7 +375,7 @@ export default function Home() {
                         </button>
                     </div>
 
-                    <button className="home-shop--button">Browse all</button>
+                    <GateLink href="/product" onClick={close}><button className="home-shop--button">Browse all</button></GateLink>
                 </div>
             </div>
         </main>

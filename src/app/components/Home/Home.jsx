@@ -233,7 +233,7 @@ export default function Home() {
                         <div className="hero__divider" />
                         <div className="hero__text-block hero-indent">
                             <p className="hero__description StartAnimation">Loved by thousands of community members, this creation contains real green tea powder</p>
-                            <GateLink href="/product" onClick={close}><HeroButton /></GateLink>
+                            <GateLink href="/product" ><HeroButton /></GateLink>
                         </div>
                     </div>
                     <h4 className="hero__tagline StartAnimation">you deserve this</h4>
@@ -375,7 +375,7 @@ export default function Home() {
                         </button>
                     </div>
 
-                    <GateLink href="/product" onClick={close}><button className="home-shop--button">Browse all</button></GateLink>
+                    <GateLink href="/product"><button className="home-shop--button">Browse all</button></GateLink>
                 </div>
             </div>
         </main>

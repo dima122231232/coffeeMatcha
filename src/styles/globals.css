@@ -498,14 +498,12 @@ canvas {
 
 /*ABOUT ----------------------------*/
 .about{
-    /* height: 100vh; */
     position: relative;
     background-color:var(--lite-green-color);
     margin-top: 55vh;
     padding-bottom:300px;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
 }
 .about__block{
     width: 80%;

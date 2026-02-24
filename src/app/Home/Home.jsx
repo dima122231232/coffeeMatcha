@@ -90,14 +90,14 @@ export default function Home() {
     }, []);
 
     const products = [
-        { img: "/images/product/item 1.png", alt: "Darker roast coffee beans", title: "Darker Roast", price: "from 12,95$", desc: "Deep, rich flavor with bold chocolate notes" },
-        { img: "/images/product/item 2.png", alt: "Light roast coffee beans", title: "Light Roast", price: "from 11,50$", desc: "Bright citrus notes and clean finish" },
-        { img: "/images/product/item 3.png", alt: "Ceremonial matcha", title: "Ceremonial Matcha", price: "from 18,90$", desc: "Smooth umami, vivid green, no bitterness" },
-        { img: "/images/product/item 1.png", alt: "House blend coffee beans", title: "House Blend", price: "from 13,40$", desc: "Balanced body with caramel sweetness" },
-        { img: "/images/product/item 2.png", alt: "Decaf coffee beans", title: "Decaf", price: "from 12,10$", desc: "Full taste, gentle caffeine-free" },
-        { img: "/images/product/item 1.png", alt: "Darker roast coffee beans", title: "Darker Roast", price: "from 12,95$", desc: "Deep, rich flavor with bold chocolate notes" },
-        { img: "/images/product/item 2.png", alt: "Light roast coffee beans", title: "Light Roast", price: "from 11,50$", desc: "Bright citrus notes and clean finish" },
-        { img: "/images/product/item 3.png", alt: "Ceremonial matcha", title: "Ceremonial Matcha", price: "from 18,90$", desc: "Smooth umami, vivid green, no bitterness" },
+        { img: "/images/product/item 1.png", alt: "Darker roast coffee beans", title: "Darker Roast", price: "from $12.95", desc: "Deep, rich flavor with bold chocolate notes" },
+        { img: "/images/product/item 2.png", alt: "Light roast coffee beans", title: "Light Roast", price: "from $11.50", desc: "Bright citrus notes and clean finish" },
+        { img: "/images/product/item 3.png", alt: "Ceremonial matcha", title: "Ceremonial Matcha", price: "from $18.90", desc: "Smooth umami, vivid green, no bitterness" },
+        { img: "/images/product/item 1.png", alt: "House blend coffee beans", title: "House Blend", price: "from $13.40", desc: "Balanced body with caramel sweetness" },
+        { img: "/images/product/item 2.png", alt: "Decaf coffee beans", title: "Decaf", price: "from $12.10", desc: "Full taste, gentle caffeine-free" },
+        { img: "/images/product/item 1.png", alt: "Darker roast coffee beans", title: "Darker Roast", price: "from $12.95", desc: "Deep, rich flavor with bold chocolate notes" },
+        { img: "/images/product/item 2.png", alt: "Light roast coffee beans", title: "Light Roast", price: "from $11.50", desc: "Bright citrus notes and clean finish" },
+        { img: "/images/product/item 3.png", alt: "Ceremonial matcha", title: "Ceremonial Matcha", price: "from $18.90", desc: "Smooth umami, vivid green, no bitterness" },
     ];
 
     const total = products.length;
@@ -108,7 +108,6 @@ export default function Home() {
     useEffect(() => {
         startRef.current = start;
     }, [start]);
-
     const strip = (offset) => products.map((_, i) => products[(i + offset) % total]);
 
     const getVisible = () => (mounted && isMobile ? 1 : 3);

@@ -56,5 +56,9 @@ body[data-path="/product"] .footer{background-color: var(--market-main-color);pa
     .product-card__title , .product-card__description{max-width:50vw;}
     .product-card__cta{margin-top:4vh;}
     .products__hero-title{width:90%;position: absolute;bottom:calc(var(--indents) * 3.5)}
+<<<<<<< HEAD
     .notify__block{margin:10px;}
+=======
+    .notify__block{margin: 10px;}
+>>>>>>> 275f008 (fix)
 }
